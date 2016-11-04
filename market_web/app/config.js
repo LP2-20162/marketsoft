@@ -127,54 +127,54 @@ app.constant('ROUTERS', [{
         "template": "<div ui-view ></div>"
     }
 }, {
-    "catalogo.catalogo.categorias": {
-        "url": "/categorias",
+    "catalogo.catalogo.cliente": {
+        "url": "/cliente",
         "data": {
             "section": "Catálogo",
-            "page": "Categorías"
+            "page": "Cliente"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/categorias/index.html"
+        "templateUrl": "market_web_apps/catalogo_web/views/cliente/index.html"
     },
-    "catalogo.catalogo.categoriasNew": {
-        "url": "/categorias/new",
+    "catalogo.catalogo.clienteNew": {
+        "url": "/cliente/new",
         "data": {
             "section": "Catálogo",
-            "page": "Categorías"
+            "page": "Cliente"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/categorias/form.html"
+        "templateUrl": "market_web_apps/catalogo_web/views/cliente/form.html"
     },
-    "catalogo.catalogo.categoriasEdit": {
-        "url": "/categorias/:id/edit",
+    "catalogo.catalogo.clienteEdit": {
+        "url": "/cliente/:id/edit",
         "data": {
             "section": "Catálogo",
-            "page": "Categorías"
+            "page": "Cliente"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/categorias/form.html"
+        "templateUrl": "market_web_apps/catalogo_web/views/cliente/form.html"
     }
 }, {
-    "catalogo.catalogo.autores": {
-        "url": "/autores",
+    "catalogo.catalogo.producto": {
+        "url": "/producto",
         "data": {
             "section": "Catálogo",
-            "page": "Autores"
+            "page": "Producto"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/autores/index.html"
+        "templateUrl": "market_web_apps/catalogo_web/views/producto/index.html"
     },
-    "catalogo.catalogo.autoresNew": {
-        "url": "/autores/new",
+    "catalogo.catalogo.productoNew": {
+        "url": "/producto/new",
         "data": {
             "section": "Catálogo",
-            "page": "Autores"
+            "page": "Producto"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/autores/form.html"
+        "templateUrl": "market_web_apps/catalogo_web/views/producto/form.html"
     },
-    "catalogo.catalogo.autoresEdit": {
-        "url": "/autores/:id/edit",
+    "catalogo.catalogo.productoEdit": {
+        "url": "/producto/:id/edit",
         "data": {
             "section": "Catálogo",
-            "page": "Autores"
+            "page": "Producto"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/autores/form.html"
+        "templateUrl": "market_web_apps/catalogo_web/views/producto/form.html"
     }
 
 }]);

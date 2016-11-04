@@ -2,13 +2,14 @@ import logging
 
 from rest_framework import serializers, viewsets
 from rest_framework.response import Response
-from rest_framework.decorators import detail_route, list_route
-from django.db.models import Q
-from operator import __or__ as OR
-from functools import reduce
 
-from market_service_apps.catalogo.models.autor import Autor
-from market_service_apps.catalogo.models.libro import Libro
+from rest_framework.decorators import list_route
+#from django.db.models import Q
+#from operator import __or__ as OR
+#from functools import reduce
+
+from market_service_apps.catalogo.models.cliente import Cliente
+
 
 from market_service_apps.utils.security import log_params
 from market_service_apps.utils.permissions import ModelPermission
@@ -27,7 +28,7 @@ class MiPermission(permissions.BasePermission):
     """
 
     def has_permission(self, request, view):
-        perms = ('catalogo.list_autor',)  # cambie aqui el permiso
+        perms = ('catalogo.list_cliente',)  # cambie aqui el permiso
         if request.user.has_perms(perms):
             return True
         else:
@@ -39,17 +40,16 @@ class MiPermission(permissions.BasePermission):
             return False
 
 
-class AutorSerializer(serializers.ModelSerializer):
+class ClienteSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Autor
-        fields = '__all__'
+        model = Cliente
         # fields = ('url', 'username', 'email', 'is_staff')
 
 
-class AutorViewSet(ModelPagination, viewsets.ModelViewSet):
-    queryset = Autor.objects.all()
-    serializer_class = AutorSerializer
+class ClienteViewSet(ModelPagination, viewsets.ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
     permission_classes = [ModelPermission, ]
 
     """
@@ -80,7 +80,7 @@ class AutorViewSet(ModelPagination, viewsets.ModelViewSet):
 
     @list_route(url_path='export', methods=['get'],
                 permission_classes=[MiPermission])
-    def reporte_autores(self, request, *args, **kwargs):
+    def reporte_clientes(self, request, *args, **kwargs):
         lista = []
         pre_query = self.get_queryset().values()
         for x in pre_query:
@@ -92,7 +92,7 @@ class AutorViewSet(ModelPagination, viewsets.ModelViewSet):
         # return Response(data)
         serializer = self.get_serializer(data, many=True)
         return Response(serializer.data)
-
+'''
     @detail_route(url_path='libros')
     def autor_libros(self, request, pk=None):
         autor = self.get_queryset().get(pk=pk)
@@ -104,3 +104,4 @@ class AutorViewSet(ModelPagination, viewsets.ModelViewSet):
             'libros': libros
         }
         return Response({'detail': results})
+'''

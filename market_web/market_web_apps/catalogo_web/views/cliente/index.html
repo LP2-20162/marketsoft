@@ -1,19 +1,19 @@
 <div ng-cloak>
     <md-content class="md-padding" layout-xs="column" layout="row">
         <div flex-xs flex-gt-xs="100" layout="column">
-            <md-card ng-controller="AutorCtrl">
+            <md-card ng-controller="ClienteCtrl">
                 <md-card-header>
                     <md-card-avatar>
                         <img class="md-user-avatar" src="media/img/list/60.jpeg" />
                     </md-card-avatar>
                     <md-card-header-text>
-                        <span class="md-headline">Autors</span>
-                        <span class="md-subhead">Trabajar con autores</span>
+                        <span class="md-headline">Cliente</span>
+                        <span class="md-subhead">Trabajar con clientes</span>
                     </md-card-header-text>
                 </md-card-header>
                 <md-divider></md-divider>
                 <md-card-actions layout="row" layout-align="start center">
-                            <md-button class="md-icon-button" aria-label="Add" ui-sref="catalogo.catalogo.autoresNew">
+                            <md-button class="md-icon-button" aria-label="Add" ui-sref="catalogo.catalogo.clienteNew">
                                 <md-tooltip md-autohide>Add</md-tooltip>
                                 <ng-md-icon icon="add" aria-label="Add"></ng-md-icon>
                             </md-button>
@@ -40,6 +40,8 @@
                             <tr>
                                 <th>#</th>
                                 <th class="col-hidden" data-order="nombre">nombre</th>
+                                <th class="col-hidden" data-order="apellidos">apellidos</th>
+                                <th class="col-hidden" data-order="dni">dni</th>
                                 <th class="col-hidden" data-order="codigo">direccion</th>
                                 <th>fecha_nac</th>
                                 <th colspan="2" class="align-options">acciones</th>
@@ -49,10 +51,12 @@
                             <tr ng-repeat="d in lista">
                                 <td> {{ (options.page - 1) * options.page_size +$index +1 }} </td>
                                 <td> {{ d.nombre }} </td>
+                                <td> {{ d.apellidos }} </td>
+                                <td> {{ d.dni }} </td>
                                 <td> {{ d.direccion }} </td>
                                 <td> {{ d.fecha_nac }} </td>
                                 <td>
-                                    <md-button class="md-icon-button md-td" aria-label="Edit" ui-sref="catalogo.catalogo.autoresEdit({id:d.id})">
+                                    <md-button class="md-icon-button md-td" aria-label="Edit" ui-sref="catalogo.catalogo.clienteEdit({id:d.id})">
                                         <md-tooltip md-autohide>Edit {{ d.codename }}</md-tooltip>
                                         <ng-md-icon  size="24" icon="edit" aria-label="Edit"></ng-md-icon>
                                     </md-button>

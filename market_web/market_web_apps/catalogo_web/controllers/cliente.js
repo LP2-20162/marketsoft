@@ -2,16 +2,16 @@ app
 // =========================================================================
 // Show View and Delete Autor 
 // =========================================================================
-    .controller("AutorCtrl", function($scope, $state, $stateParams, catalogoService, $window, $mdDialog, $log, toastr) {
+    .controller("ClienteCtrl", function($scope, $state, $stateParams, catalogoService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
     $scope.fields = 'nombre';
     var params = {};
     $scope.lista = [];
-    $scope.autor = {};
+    $scope.cliente = {};
 
     $scope.list = function(params) {
         $scope.isLoading = true;
-        catalogoService.Autor.query(params, function(r) {
+        catalogoService.Cliente.query(params, function(r) {
             $scope.lista = r.results;
             $scope.options = r.options;
             $scope.isLoading = false;
@@ -35,9 +35,9 @@ app
 
     $scope.delete = function(d) {
         if ($window.confirm("Seguro?")) {
-            catalogoService.Autor.delete({ id: d.id }, function(r) {
-                $log.log("Se eliminó autor:" + JSON.stringify(d));
-                toastr.success('Se eliminó autor ' + d.nombre, 'Autor');
+            catalogoService.Cliente.delete({ id: d.id }, function(r) {
+                $log.log("Se eliminó cliente:" + JSON.stringify(d));
+                toastr.success('Se eliminó cliente ' + d.nombre, 'Cliente');
                 $scope.list(params);
             }, function(err) {
                 $log.log("Error in delete:" + JSON.stringify(err));
@@ -51,13 +51,13 @@ app
 // =========================================================================
 // Create and Update Autor
 // =========================================================================
-.controller("AutorSaveCtrl", function($scope, $state, $stateParams, catalogoService, $window, $mdDialog, $log, toastr) {
+.controller("ClienteSaveCtrl", function($scope, $state, $stateParams, catalogoService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
-    $scope.autor = {};
+    $scope.cliente = {};
 
     $scope.sel = function() {
-        catalogoService.Autor.get({ id: $stateParams.id }, function(r) {
-            $scope.autor = r;
+        catalogoService.Cliente.get({ id: $stateParams.id }, function(r) {
+            $scope.cliente = r;
         }, function(err) {
             $log.log("Error in get:" + JSON.stringify(err));
             toastr.error(err.data.detail, err.status + ' ' + err.statusText);
@@ -68,20 +68,20 @@ app
     }
 
     $scope.save = function() {
-        if ($scope.autor.id) {
-            catalogoService.Autor.update({ id: $scope.autor.id }, $scope.autor, function(r) {
+        if ($scope.cliente.id) {
+            catalogoService.Clienter.update({ id: $scope.cliente.id }, $scope.cliente, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se editó autor ' + r.nombre, 'Autor');
-                $state.go('catalogo.catalogo.autores');
+                toastr.success('Se editó cliente ' + r.nombre, 'Cliente');
+                $state.go('catalogo.catalogo.cliente');
             }, function(err) {
                 $log.log("Error in update:" + JSON.stringify(err));
                 toastr.error(err.data.detail, err.status + ' ' + err.statusText);
             });
         } else {
-            catalogoService.Autor.save($scope.autor, function(r) {
+            catalogoService.Cliente.save($scope.cliente, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se insertó autor ' + r.nombre, 'Autor');
-                $state.go('catalogo.catalogo.autores');
+                toastr.success('Se insertó cliente ' + r.nombre, 'Cliente');
+                $state.go('catalogo.catalogo.Cliente');
             }, function(err) {
                 $log.log("Error in save:" + JSON.stringify(err));
                 toastr.error(err.data.detail, err.status + ' ' + err.statusText);
@@ -90,7 +90,7 @@ app
     };
 
     $scope.cancel = function() {
-        $state.go('catalogo.catalogo.autores');
+        $state.go('catalogo.catalogo.cliente');
 
 
         

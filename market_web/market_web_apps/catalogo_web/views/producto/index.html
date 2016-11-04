@@ -1,19 +1,19 @@
-<div ng-cloak>
+div ng-cloak>
     <md-content class="md-padding" layout-xs="column" layout="row">
         <div flex-xs flex-gt-xs="100" layout="column">
-            <md-card ng-controller="CategoriaCtrl">
+            <md-card ng-controller="ProductoCtrl">
                 <md-card-header>
                     <md-card-avatar>
                         <img class="md-user-avatar" src="media/img/list/60.jpeg" />
                     </md-card-avatar>
                     <md-card-header-text>
-                        <span class="md-headline">Categorías</span>
-                        <span class="md-subhead">Trabajar con categorías</span>
+                        <span class="md-headline">Producto</span>
+                        <span class="md-subhead">Trabajar con cpoducto</span>
                     </md-card-header-text>
                 </md-card-header>
                 <md-divider></md-divider>
                 <md-card-actions layout="row" layout-align="start center">
-                            <md-button class="md-icon-button" aria-label="Add" ui-sref="catalogo.catalogo.categoriasNew">
+                            <md-button class="md-icon-button" aria-label="Add" ui-sref="catalogo.catalogo.productoNew">
                                 <md-tooltip md-autohide>Add</md-tooltip>
                                 <ng-md-icon icon="add" aria-label="Add"></ng-md-icon>
                             </md-button>
@@ -36,8 +36,14 @@
                             <tr>
                                 <th>#</th>
                                 <th class="col-hidden" data-order="nombre">nombre</th>
-                                <th class="col-hidden" data-order="codigo">codigo</th>
-                                <th>estado</th>
+                                <th class="col-hidden" data-order="lote">lote</th>
+                                <th class="col-hidden" data-order="presentancio">presentancio</th>
+                                <th class="col-hidden" data-order="sanitario">sanitario</th>
+                                <th class="col-hidden" data-order="fecha_expiracion">fecha_expiracion</th>
+                                <th class="col-hidden" data-order="fecha_produccion">fecha_produccion</th>
+                                <th class="col-hidden" data-order="Descripcion">Descripcion</th>
+                                <th class="col-hidden" data-order="precio_venta">precio_venta</th>
+                                <th class="col-hidden" data-order="stock">stock</th>
                                 <th colspan="2" class="align-options">acciones</th>
                             </tr>
                         </thead>
@@ -45,10 +51,16 @@
                             <tr ng-repeat="d in lista">
                                 <td> {{ $index + 1 }} </td>
                                 <td> {{ d.nombre }} </td>
-                                <td> {{ d.codigo }} </td>
-                                <td> {{ d.estado }} </td>
+                                <td> {{ d.lote }} </td>
+                                <td> {{ d.presentancio }} </td>
+                                <td> {{ d.sanitarioestado }} </td>
+                                <td> {{ d.fecha_expiracion }} </td>
+                                <td> {{ d.fecha_produccion }} </td>
+                                <td> {{ d.Descripcion }} </td>
+                                <td> {{ d.precio_venta }} </td>
+                                <td> {{ d.stock }} </td>
                                 <td>
-                                    <md-button class="md-icon-button md-td" aria-label="Edit" ui-sref="catalogo.catalogo.categoriasEdit({id:d.id})">
+                                    <md-button class="md-icon-button md-td" aria-label="Edit" ui-sref="catalogo.catalogo.productoEdit({id:d.id})">
                                         <md-tooltip md-autohide>Edit {{ d.codename }}</md-tooltip>
                                         <ng-md-icon  size="24" icon="edit" aria-label="Edit"></ng-md-icon>
                                     </md-button>

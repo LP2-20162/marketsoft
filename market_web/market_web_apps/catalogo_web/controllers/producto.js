@@ -2,19 +2,19 @@ app
 // =========================================================================
 // Show View and Delete Categoria 
 // =========================================================================
-    .controller("CategoriaCtrl", function($scope, $state, $stateParams, catalogoService, $window, $mdDialog, $log, toastr) {
+    .controller("ProductoaCtrl", function($scope, $state, $stateParams, catalogoService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
     $scope.fields = 'name,codename';
     var params = {};
     $scope.lista = [];
-    $scope.categoria = {};
+    $scope.producto = {};
 
     
     //$window.location = "#" + $location.path();
 
     $scope.list = function(params) {
         $scope.isLoading = true;
-        catalogoService.Categoria.query(params, function(r) {
+        catalogoService.Producto.query(params, function(r) {
             $scope.lista = r;
             //$scope.options = r.options;
             $scope.isLoading = false;
@@ -38,9 +38,9 @@ app
 
     $scope.delete = function(d) {
         if ($window.confirm("Seguro?")) {
-            catalogoService.Categoria.delete({ id: d.id }, function(r) {
-                $log.log("Se eliminó la categoría:" + JSON.stringify(d));
-                toastr.success('Se eliminó la categoría ' + d.nombre, 'Categoría');
+            catalogoService.Producto.delete({ id: d.id }, function(r) {
+                $log.log("Se eliminó la prroducto:" + JSON.stringify(d));
+                toastr.success('Se eliminó la producto ' + d.nombre, 'Producto');
                 $scope.list(params);
             }, function(err) {
                 $log.log("Error in delete:" + JSON.stringify(err));
@@ -54,13 +54,13 @@ app
 // =========================================================================
 // Create and Update Categoria
 // =========================================================================
-.controller("CategoriaSaveCtrl", function($scope, $state, $stateParams, catalogoService, $window, $mdDialog, $log, toastr) {
+.controller("ProductoSaveCtrl", function($scope, $state, $stateParams, catalogoService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
-    $scope.categoria = {};
+    $scope.Producto = {};
 
     $scope.sel = function() {
-        catalogoService.Categoria.get({ id: $stateParams.id }, function(r) {
-            $scope.categoria = r;
+        catalogoService.Producto.get({ id: $stateParams.id }, function(r) {
+            $scope.producto = r;
         }, function(err) {
             $log.log("Error in get:" + JSON.stringify(err));
             toastr.error(err.data.detail, err.status + ' ' + err.statusText);
@@ -71,20 +71,20 @@ app
     }
 
     $scope.save = function() {
-        if ($scope.categoria.id) {
-            catalogoService.Categoria.update({ id: $scope.categoria.id }, $scope.categoria, function(r) {
+        if ($scope.producto.id) {
+            catalogoService.Producto.update({ id: $scope.producto.id }, $scope.producto, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se editó la categoría ' + r.nombre, 'Categoría');
-                $state.go('catalogo.catalogo.categorias');
+                toastr.success('Se editó la producto ' + r.nombre, 'Producto');
+                $state.go('catalogo.catalogo.producto');
             }, function(err) {
                 $log.log("Error in update:" + JSON.stringify(err));
                 toastr.error(err.data.detail, err.status + ' ' + err.statusText);
             });
         } else {
-            catalogoService.Categoria.save($scope.categoria, function(r) {
+            catalogoService.Producto.save($scope.producto, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se insertó la categoría ' + r.nombre, 'Categoría');
-                $state.go('catalogo.catalogo.categorias');
+                toastr.success('Se insertó la producto ' + r.nombre, 'Producto');
+                $state.go('catalogo.catalogo.producto');
             }, function(err) {
                 $log.log("Error in save:" + JSON.stringify(err));
                 toastr.error(err.data.detail, err.status + ' ' + err.statusText);
@@ -93,6 +93,6 @@ app
     };
 
     $scope.cancel = function() {
-        $state.go('catalogo.catalogo.categorias');
+        $state.go('catalogo.catalogo.producto');
     };
 });

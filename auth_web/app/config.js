@@ -3,8 +3,8 @@ var loginUrl = 'http://localhost:9001/auth_web/';
 var iotecaUrl = 'http://localhost:9001/market_web/';
 
 
-var clientId = 'icTZlfcH4t7lLEq3Zd4xAKNMz5B6S6sSqZKByaHU';
-var clientSecret = 'RKUizF9IfZjWHXSx1VnVSuL0khgkHVRZwbk7RkqopsSNPhLedN88BLQLvOEVEejWBJJBjGNHm4Gg9hp4OdM8Qqphy0inAfpFf8KOgKnNviyH7Sa1OpLWEEepV9XXpYvu';
+var clientId = 'Nd33HkotycCIWVTPQEuLPz7VyAw05ioaGJJy0gJb';
+var clientSecret = 'Z9cEryz7XPJrxKkHZ0ILdptEhqa2apTdgwOIlK5TYXmmSa607BQzagUSAN1IVG4QmZQt3ZTe4zA2oc3vmCCMboDUWbaLIIBzw17AQci5TkAF8LLVh49Gqoy9MppFdVN9';
 var grantType = 'password';
 
 var config = {

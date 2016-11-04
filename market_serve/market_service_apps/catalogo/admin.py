@@ -1,38 +1,21 @@
 from django.contrib import admin
-from .models.categoria import Categoria
-from .models.autor import Autor
-from .models.libro import Libro
-from .models.ejemplar import Ejemplar
+
+from .models.cliente import Cliente
+from .models.producto import Producto
 
 # Register your models here.
 
 
-class CategoriaAdmin(admin.ModelAdmin):
-
-    """docstring for CategoriaAdmin"""
-
-    list_display = ("nombre", "codigo", "estado")
-    search_fields = ("nombre", "codigo",)
+@admin.register(Cliente)
+class ClienteAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'apellidos', 'dni', 'direccion')
+    search_fields = ('dni', 'nombre', 'apellidos')
     list_per_page = 3
 
 
-class AutorAdmin(admin.ModelAdmin):
-
-    """docstring for AutorAdmin"""
-
-    list_display = ("nombre", "direccion", "fecha_nac")
-    search_fields = ("nombre", "direccion",)
-    list_per_page = 2
-
-
-admin.site.register(Categoria, CategoriaAdmin)
-
-admin.site.register(Autor, AutorAdmin)
-
-
-class LibroAdmin(admin.ModelAdmin):
-
-    list_display = ("nombre", "categoria", "created_at", "updated_at")
-
-
-admin.site.register(Libro, LibroAdmin)
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    list_display = ('lote', 'presentancion', 'TIPO', 'nombre', 'descripcion', 'fecha_expiracion',
+                    'fecha_produccion',  'precio_Compra', 'precio_venta', 'stock')
+    search_fields = ('nombre', 'descripcion')
+    list_per_page = 3
