@@ -1,0 +1,100 @@
+<div ng-cloak>
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="100" layout="column">
+            <form name="dForm" role="form" ng-controller="ProductoSaveCtrl">
+                <md-card>
+                    <md-card-header>
+                        <md-card-avatar>
+                            <img class="md-user-avatar" src="media/img/list/60.jpeg" />
+                        </md-card-avatar>
+                        <md-card-header-text>
+                           
+                            <span class="md-headline">Producto</span>
+                            <span class="md-subhead">Trabajar con producto</span>
+                        </md-card-header-text>
+                    </md-card-header>
+                    <md-card-content>
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Nombre</label>
+                                <input name="nombre" ng-model="producto.nombre">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Lote</label>
+                                <input name="lote" ng-model="producto.lote" required>
+                                <div ng-messages="dForm.lote.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Presentancio</label>
+                                <input name="presentancio" ng-model="producto.presentancio" required>
+                                <div ng-messages="dForm.presentancio.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Sanitario</label>
+                                <input name="sanitario" ng-model="producto.sanitario" required>
+                                <div ng-messages="dForm.sanitario.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Fecha_expiracion</label>
+                                <input name="fecha_expiracion" ng-model="producto.fecha_expiracion" required>
+                                <div ng-messages="dForm.fecha_expiracion.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Fecha_produccion</label>
+                                <input name="fecha_produccion" ng-model="producto.fecha_produccion" required>
+                                <div ng-messages="dForm.fecha_produccion.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Descripcion</label>
+                                <input name="descripcion" ng-model="producto.descripcion" required>
+                                <div ng-messages="dForm.Descripcion.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Precio_venta</label>
+                                <input name="precio_venta" ng-model="producto.precio_venta" required>
+                                <div ng-messages="dForm.precio_venta.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>stock</label>
+                                <input name="stock" ng-model="producto.stock" required>
+                                <div ng-messages="dForm.lote.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+
+
+                        </div>
+                        
+                    </md-card-content>
+                    <md-divider></md-divider>
+                    <md-card-actions layout="row" layout-xs="column" layout-align="start center">
+                        <md-card-icon-actions>
+                            <md-button class="md-icon-button" aria-label="toggle">
+                                <md-icon md-svg-icon="md-toggle-arrow"></md-icon>
+                            </md-button>
+                        </md-card-icon-actions>
+                        <md-button type="reset" ng-click="cancel()" class="md-raised">Cancel</md-button>
+                        <md-button type="submit" ng-click="save()" class="md-raised md-primary">
+                            <span ng-show="producto.id == null">Create</span>
+                            <span ng-show="producto.id">Update</span>
+                        </md-button>
+                    </md-card-actions>
+                </md-card>
+            </form>
+        </div>
+    </md-content>
+</div>

@@ -1,15 +1,15 @@
 from django.conf.urls import url, include
 from rest_framework import routers
 
-from .categoria_view import CategoriaViewSet
-from .autor_view import AutorViewSet
-from .libro_view import LibroViewSet
+
+from .producto_view import ProductoViewSet
+from .cliente_view import ClienteViewSet
 
 router = routers.DefaultRouter()
 
-router.register(r'categorias', CategoriaViewSet)
-router.register(r'autors', AutorViewSet, 'autors-view')
-router.register(r'libros', LibroViewSet, 'libros-view')
+
+router.register(r'cliente', ClienteViewSet, 'cliente-view')
+router.register(r'producto', ProductoViewSet, 'producto-view')
 
 urlpatterns = [
 
