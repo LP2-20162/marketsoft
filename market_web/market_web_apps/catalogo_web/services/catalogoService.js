@@ -51,7 +51,7 @@ app
 
         }),
 
-        Cliente: $resource(url + "distribuidor/:id/", { 'id': '@id' }, {
+        Distribuidor: $resource(url + "distribuidor/:id/", { 'id': '@id' }, {
             "update": { method: 'PUT' },
             "query": {
                 method: 'GET',

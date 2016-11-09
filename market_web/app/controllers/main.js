@@ -7,7 +7,7 @@ app
 
     $scope.menu = menuService;
     $scope.app = {
-        name: 'market',
+        name: 'Market',
         version: '1.0.1',
 
         setting: {
