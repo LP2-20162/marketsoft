@@ -104,6 +104,11 @@ app
                 title: 'Productos',
                 state: 'catalogo.catalogo.producto',
                 type: 'link'
+            }, 
+            {
+                title: 'Distribuidores',
+                state: 'catalogo.catalogo.distribuidores',
+                type: 'link'
             }, ]
         }]
     });

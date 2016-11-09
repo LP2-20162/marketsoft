@@ -177,4 +177,29 @@ app.constant('ROUTERS', [{
         "templateUrl": "market_web_apps/catalogo_web/views/producto/form.html"
     }
 
-}]);
+}, {
+    "catalogo.catalogo.distribuidor": {
+        "url": "/distribuidor",
+        "data": {
+            "section": "Catálogo",
+            "page": "Distribuidor"
+        },
+        "templateUrl": "market_web_apps/catalogo_web/views/distribuidor/index.html"
+    },
+    "catalogo.catalogo.distribuidorNew": {
+        "url": "/distribuidor/new",
+        "data": {
+            "section": "Catálogo",
+            "page": "Distribuidor"
+        },
+        "templateUrl": "market_web_apps/catalogo_web/views/distribuidor/form.html"
+    },
+    "catalogo.catalogo.distribuidorEdit": {
+        "url": "/distribuidor/:id/edit",
+        "data": {
+            "section": "Catálogo",
+            "page": "Distribuidor"
+        },
+        "templateUrl": "market_web_apps/catalogo_web/views/distribuidor/form.html"
+    }
+},]);
