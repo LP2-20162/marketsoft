@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models.cliente import Cliente
 from .models.producto import Producto
 from .models.distribuidor import Distribuidor
-
+from .models.marca import Marca
 # Register your models here.
 
 
@@ -26,4 +26,10 @@ class ProductoAdmin(admin.ModelAdmin):
 class DistribuidorAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'ruc')
     search_fields = ('codigo', 'nombre', 'direccion')
+    list_per_page = 3
+
+
+@admin.register(Marca)
+class EmpresaAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'caracteristica')
     list_per_page = 3
