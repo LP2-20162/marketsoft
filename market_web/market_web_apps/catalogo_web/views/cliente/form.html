@@ -1,0 +1,67 @@
+<div ng-cloak>
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="100" layout="column">
+            <form name="dForm" role="form" ng-controller="ClienteSaveCtrl">
+                <md-card>
+                    <md-card-header>
+                        <md-card-avatar>
+                            <img class="md-user-avatar" src="media/img/list/60.jpeg" />
+                        </md-card-avatar>
+                        <md-card-header-text>
+                            <span class="md-headline">Cliente</span>
+                            <span class="md-subhead">Trabajar con clientes</span>
+                        </md-card-header-text>
+                    </md-card-header>
+                    <md-card-content>
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Nombre</label>
+                                <input name="nombre" ng-model="cliente.nombre" required>
+                                <div ng-messages="dForm.nombre.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Apellidos</label>
+                                <input name="apellidos" ng-model="cliente.apellidos" required>
+                                <div ng-messages="dForm.apellidos.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>DNI</label>
+                                <input name="dni" ng-model="cliente.dni" required>
+                                <div ng-messages="dForm.dni.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Direccion</label>
+                                <input name="direccion" ng-model="cliente.direccion">
+                            </md-input-container>
+                        </div>
+                        <md-input-container class="md-block">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Fecha Nac.</label>
+                                <input name="fecha_nac" ng-model="cliente.fecha_nac">
+                            </md-input-container>
+                        </md-input-container>
+                    </md-card-content>
+                    <md-divider></md-divider>
+                    <md-card-actions layout="row" layout-xs="column" layout-align="start center">
+                        <md-card-icon-actions>
+                            <md-button class="md-icon-button" aria-label="toggle">
+                                <md-icon md-svg-icon="md-toggle-arrow"></md-icon>
+                            </md-button>
+                        </md-card-icon-actions>
+                        <md-button type="reset" ng-click="cancel()" class="md-raised">Cancel</md-button>
+                        <md-button type="submit" ng-click="save()" class="md-raised md-primary">
+                            <span ng-show="cliente.id == null">Create</span>
+                            <span ng-show="cliente.id">Update</span>
+                        </md-button>
+                    </md-card-actions>
+                </md-card>
+            </form>
+        </div>
+    </md-content>
+</div>
