@@ -44,39 +44,14 @@ class ClienteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cliente
-        # fields = ('url', 'username', 'email', 'is_staff')
+        fields = '__all__'
+    # fields = ('url', 'username', 'email', 'is_staff')
 
 
 class ClienteViewSet(ModelPagination, viewsets.ModelViewSet):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
     permission_classes = [ModelPermission, ]
-
-    """
-    def get_queryset(self):
-        queryset = Autor.objects.all()
-        return queryset
-    def list(self, request, *args, **kwargs):
-        query = request.query_params.get('query', '')
-        all = self.request.query_params.get('all', None)
-        # if all == 'true':
-        #    self.pagination_class = None
-        #    return Autor.objects.all()
-        if query is not None:
-            queryall = (Q(nombre__icontains=query),
-                        Q(direccion__icontains=query))
-            queryset = self.get_queryset().filter(reduce(OR, queryall))
-            results = self.paginate_queryset(queryset)
-            if results is not None:
-                serializer = self.get_serializer(results, many=True)
-                return self.get_paginated_response(serializer.data)
-        else:
-            data = self.get_queryset()
-            results = self.paginate_queryset(data)
-            if results is not None:
-                serializer = self.get_serializer(results, many=True)
-                return self.get_paginated_response(serializer.data)
-    """
 
     @list_route(url_path='export', methods=['get'],
                 permission_classes=[MiPermission])
@@ -92,16 +67,3 @@ class ClienteViewSet(ModelPagination, viewsets.ModelViewSet):
         # return Response(data)
         serializer = self.get_serializer(data, many=True)
         return Response(serializer.data)
-'''
-    @detail_route(url_path='libros')
-    def autor_libros(self, request, pk=None):
-        autor = self.get_queryset().get(pk=pk)
-        libros = Libro.objects.filter(autors=pk).values()
-        libros_count = Libro.objects.filter(autors=pk).count()
-        results = {
-            'autor': autor.nombre,
-            'cantidad': libros_count,
-            'libros': libros
-        }
-        return Response({'detail': results})
-'''

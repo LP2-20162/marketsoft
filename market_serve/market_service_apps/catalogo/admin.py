@@ -4,6 +4,7 @@ from .models.cliente import Cliente
 from .models.producto import Producto
 from .models.distribuidor import Distribuidor
 from .models.marca import Marca
+from .models.compra import DetalleCompra
 # Register your models here.
 
 
@@ -33,3 +34,7 @@ class DistribuidorAdmin(admin.ModelAdmin):
 class EmpresaAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'caracteristica')
     list_per_page = 3
+
+
+class producto_compraInline(admin.TabularInline):
+    model = DetalleCompra

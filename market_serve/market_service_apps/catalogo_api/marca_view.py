@@ -9,6 +9,7 @@ from market_service_apps.catalogo.models.marca import Marca
 class MarcaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Marca
+        fields = '__all__'
         # fields = ('url', 'username', 'email', 'is_staff')
 
 

@@ -3,19 +3,19 @@ from django.db.models import Q
 from operator import __or__ as OR
 from functools import reduce
 
-from market_service_apps.catalogo.models.distribuidor import Distribuidor
+from market_service_apps.catalogo.models.compra import Cabecera
 
 
-class DistribuidorSerializer(serializers.ModelSerializer):
+class CabeceraSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Distribuidor
+        model = Cabecera
         fields = '__all__'
         # fields = ('url', 'username', 'email', 'is_staff')
 
 
-class DistribuidorViewSet(viewsets.ModelViewSet):
-    queryset = Distribuidor.objects.all()
-    serializer_class = DistribuidorSerializer
+class CabeceraViewSet(viewsets.ModelViewSet):
+    queryset = Cabecera.objects.all()
+    serializer_class = CabeceraSerializer
 
     def get_queryset(self):
         query = self.request.query_params.get('query', '')
