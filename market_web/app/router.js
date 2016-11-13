@@ -23,7 +23,7 @@ app
         //console.log("$window.location " + $window.location);
         //console.log("window.location.hash " + window.location.hash);
         //console.log("$location.path() " + $location.path());
-        //$state.path('/catalogo/catalogo/categorias');
+        //$state.path('/registro/registro/categorias');
         //$location.path($location.path()).replace();
         //var url = window.location;
         //$window.location.hash = "#" + $location.path();

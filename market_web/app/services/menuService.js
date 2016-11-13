@@ -95,18 +95,18 @@ app
         menu: [{
             title: 'Registro',
             type: 'toggle',
-            state: 'catalogo.catalogo',
+            state: 'registro.registro',
             menu_items: [{
                 title: 'Cliente',
-                state: 'catalogo.catalogo.cliente',
+                state: 'registro.registro.cliente',
                 type: 'link'
             }, {
                 title: 'Productos',
-                state: 'catalogo.catalogo.producto',
+                state: 'registro.registro.producto',
                 type: 'link'
             }, {
                 title: 'Distribuidores',
-                state: 'catalogo.catalogo.distribuidores',
+                state: 'registro.registro.distribuidores',
                 type: 'link'
             }, ]
         }]

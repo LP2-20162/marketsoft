@@ -108,8 +108,8 @@ app.constant('ROUTERS', [{
     },
 
 }, {
-    "catalogo": {
-        "url": "/catalogo",
+    "registro": {
+        "url": "/registro",
         "views": {
             "": {
                 "templateUrl": "app/views/layout.html"
@@ -122,84 +122,84 @@ app.constant('ROUTERS', [{
             }
         }
     },
-    "catalogo.catalogo": {
-        "url": "/catalogo",
+    "registro.registro": {
+        "url": "/registro",
         "template": "<div ui-view ></div>"
     }
 }, {
-    "catalogo.catalogo.cliente": {
+    "registro.registro.cliente": {
         "url": "/cliente",
         "data": {
-            "section": "Catálogo",
+            "section": "Registro",
             "page": "Cliente"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/cliente/index.html"
+        "templateUrl": "market_web_apps/registro_web/views/cliente/index.html"
     },
-    "catalogo.catalogo.clienteNew": {
+    "registro.registro.clienteNew": {
         "url": "/cliente/new",
         "data": {
-            "section": "Catálogo",
+            "section": "Registro",
             "page": "Cliente"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/cliente/form.html"
+        "templateUrl": "market_web_apps/registro_web/views/cliente/form.html"
     },
-    "catalogo.catalogo.clienteEdit": {
+    "registro.registro.clienteEdit": {
         "url": "/cliente/:id/edit",
         "data": {
-            "section": "Catálogo",
+            "section": "Registro",
             "page": "Cliente"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/cliente/form.html"
+        "templateUrl": "market_web_apps/registro_web/views/cliente/form.html"
     }
 }, {
-    "catalogo.catalogo.producto": {
+    "registro.registro.producto": {
         "url": "/producto",
         "data": {
-            "section": "Catálogo",
+            "section": "Registro",
             "page": "Producto"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/producto/index.html"
+        "templateUrl": "market_web_apps/registro_web/views/producto/index.html"
     },
-    "catalogo.catalogo.productoNew": {
+    "registro.registro.productoNew": {
         "url": "/producto/new",
         "data": {
-            "section": "Catálogo",
+            "section": "Registro",
             "page": "Producto"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/producto/form.html"
+        "templateUrl": "market_web_apps/registro_web/views/producto/form.html"
     },
-    "catalogo.catalogo.productoEdit": {
+    "registro.registro.productoEdit": {
         "url": "/producto/:id/edit",
         "data": {
-            "section": "Catálogo",
+            "section": "Registro",
             "page": "Producto"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/producto/form.html"
+        "templateUrl": "market_web_apps/registro_web/views/producto/form.html"
     }
 
 }, {
-    "catalogo.catalogo.distribuidor": {
+    "registro.registro.distribuidor": {
         "url": "/distribuidor",
         "data": {
-            "section": "Catálogo",
+            "section": "Registro",
             "page": "Distribuidor"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/distribuidor/index.html"
+        "templateUrl": "market_web_apps/registro_web/views/distribuidor/index.html"
     },
-    "catalogo.catalogo.distribuidorNew": {
+    "registro.registro.distribuidorNew": {
         "url": "/distribuidor/new",
         "data": {
-            "section": "Catálogo",
+            "section": "Registro",
             "page": "Distribuidor"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/distribuidor/form.html"
+        "templateUrl": "market_web_apps/registro_web/views/distribuidor/form.html"
     },
-    "catalogo.catalogo.distribuidorEdit": {
+    "registro.registro.distribuidorEdit": {
         "url": "/distribuidor/:id/edit",
         "data": {
-            "section": "Catálogo",
+            "section": "Registro",
             "page": "Distribuidor"
         },
-        "templateUrl": "market_web_apps/catalogo_web/views/distribuidor/form.html"
+        "templateUrl": "market_web_apps/registro_web/views/distribuidor/form.html"
     }
 },]);

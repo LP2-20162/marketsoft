@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     'market_service_apps.auths',
     'market_service_apps.auths_api',
 
-    'market_service_apps.catalogo',
-    'market_service_apps.catalogo_api',
+    'market_service_apps.registro',
+    'market_service_apps.registro_api',
 
 ]
 
