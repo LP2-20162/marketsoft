@@ -2,14 +2,11 @@ import logging
 
 from rest_framework import serializers, viewsets
 from rest_framework.response import Response
-
 from rest_framework.decorators import list_route
-#from django.db.models import Q
 #from operator import __or__ as OR
 #from functools import reduce
 
 from market_service_apps.registro.models.cliente import Cliente
-
 
 from market_service_apps.utils.security import log_params
 from market_service_apps.utils.permissions import ModelPermission
@@ -45,7 +42,6 @@ class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
         fields = '__all__'
-    # fields = ('url', 'username', 'email', 'is_staff')
 
 
 class ClienteViewSet(ModelPagination, viewsets.ModelViewSet):
@@ -53,15 +49,41 @@ class ClienteViewSet(ModelPagination, viewsets.ModelViewSet):
     serializer_class = ClienteSerializer
     permission_classes = [ModelPermission, ]
 
+    """
+    def get_queryset(self):
+        queryset = Cliente.objects.all()
+        return queryset
+    def list(self, request, *args, **kwargs):
+        query = request.query_params.get('query', '')
+        all = self.request.query_params.get('all', None)
+        # if all == 'true':
+        #    self.pagination_class = None
+        #    return Cliente.objects.all()
+        if query is not None:
+            queryall = (Q(nombre__icontains=query),
+                        Q(direccion__icontains=query))
+            queryset = self.get_queryset().filter(reduce(OR, queryall))
+            results = self.paginate_queryset(queryset)
+            if results is not None:
+                serializer = self.get_serializer(results, many=True)
+                return self.get_paginated_response(serializer.data)
+        else:
+            data = self.get_queryset()
+            results = self.paginate_queryset(data)
+            if results is not None:
+                serializer = self.get_serializer(results, many=True)
+                return self.get_paginated_response(serializer.data)
+    """
+
     @list_route(url_path='export', methods=['get'],
                 permission_classes=[MiPermission])
-    def reporte_clientes(self, request, *args, **kwargs):
+    def reporte_clientees(self, request, *args, **kwargs):
         lista = []
         pre_query = self.get_queryset().values()
         for x in pre_query:
             lista.append([x['nombre'], x['direccion']])
         print(lista)
-        #data = Autor.objects.pdf(lista, 'mi primer reporte')
+        #data = Cliente.objects.pdf(lista, 'mi primer reporte')
         data = self.get_queryset().filter()
         # return Response({'detail':str('Exportado a PDF')})
         # return Response(data)

@@ -5,8 +5,8 @@
     },
 
 }, {
-    "catalogo": {
-        "url": "/catalogo",
+    "registro": {
+        "url": "/registro",
         "views": {
             "": {
                 "templateUrl": "app/views/layout.html"
@@ -19,59 +19,34 @@
             }
         }
     },
-    "catalogo.catalogo": {
-        "url": "/catalogo",
+    "registro.registro": {
+        "url": "/registro",
         "template": "<div ui-view ></div>"
     },
-}, {
-    "catalogo.catalogo.categorias": {
-        "url": "/categorias",
+},  {
+    "registro.registro.cliente": {
+        "url": "/cliente",
         "data": {
-            "section": "Catálogo",
-            "page": "Categorías"
+            "section": "registro",
+            "page": "cliente"
         },
-        "templateUrl": "ioteca_web_apps/catalogo_web/views/categorias/index.html"
+        "templateUrl": "market_web_apps/registro_web/views/cliente/index.html"
     },
-    "catalogo.catalogo.categoriasNew": {
-        "url": "/categorias/new",
+    "registro.registro.clienteNew": {
+        "url": "/cliente/new",
         "data": {
-            "section": "Catálogo",
-            "page": "Categorías"
+            "section": "registro",
+            "page": "cliente"
         },
-        "templateUrl": "ioteca_web_apps/catalogo_web/views/categorias/form.html"
+        "templateUrl": "market_web_apps/registro_web/views/cliente/form.html"
     },
-    "catalogo.catalogo.categoriasEdit": {
-        "url": "/categorias/:id/edit",
+    "registro.registro.clienteEdit": {
+        "url": "/cliente/:id/edit",
         "data": {
-            "section": "Catálogo",
-            "page": "Categorías"
+            "section": "Registro",
+            "page": "cliente"
         },
-        "templateUrl": "ioteca_web_apps/catalogo_web/views/categorias/form.html"
-    },
-}, {
-    "catalogo.catalogo.autores": {
-        "url": "/autores",
-        "data": {
-            "section": "Catálogo",
-            "page": "Autores"
-        },
-        "templateUrl": "ioteca_web_apps/catalogo_web/views/autores/index.html"
-    },
-    "catalogo.catalogo.autoresNew": {
-        "url": "/autores/new",
-        "data": {
-            "section": "Catálogo",
-            "page": "Autores"
-        },
-        "templateUrl": "ioteca_web_apps/catalogo_web/views/autores/form.html"
-    },
-    "catalogo.catalogo.autoresEdit": {
-        "url": "/autores/:id/edit",
-        "data": {
-            "section": "Catálogo",
-            "page": "Autores"
-        },
-        "templateUrl": "ioteca_web_apps/catalogo_web/views/autores/form.html"
+        "templateUrl": "market_web_apps/registro_web/views/cliente/form.html"
     }
 
 }]

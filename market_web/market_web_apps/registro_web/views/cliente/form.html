@@ -43,7 +43,10 @@
                         <md-input-container class="md-block">
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Fecha Nac.</label>
-                                <input name="fecha_nac" ng-model="cliente.fecha_nac">
+                                <md-datepicker name="fecha_nac" ng-model="cliente.fecha_nac"></md-datepicker>
+                                <div ng-messages="dForm.fecha_nac.$error">
+                                    <div ng-message="valid">Not a valid date!.</div>
+                                </div>
                             </md-input-container>
                         </md-input-container>
                     </md-card-content>

@@ -1,10 +1,4 @@
-"""
-@copyright   Copyright (c) 2016  Devhres Team
-@author      Angel Sullon (@asullom)
-@package     utils
 
-Descripcion: serializers
-"""
 
 from rest_framework import serializers
 

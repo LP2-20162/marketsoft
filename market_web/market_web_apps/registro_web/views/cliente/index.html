@@ -7,7 +7,7 @@
                         <img class="md-user-avatar" src="media/img/list/60.jpeg" />
                     </md-card-avatar>
                     <md-card-header-text>
-                        <span class="md-headline">Cliente</span>
+                        <span class="md-headline">Clientes</span>
                         <span class="md-subhead">Trabajar con clientes</span>
                     </md-card-header-text>
                 </md-card-header>
@@ -44,6 +44,7 @@
                                 <th class="col-hidden" data-order="dni">dni</th>
                                 <th class="col-hidden" data-order="codigo">direccion</th>
                                 <th>fecha_nac</th>
+                                <th>updated_at</th>
                                 <th colspan="2" class="align-options">acciones</th>
                             </tr>
                         </thead>
@@ -52,9 +53,10 @@
                                 <td> {{ (options.page - 1) * options.page_size +$index +1 }} </td>
                                 <td> {{ d.nombre }} </td>
                                 <td> {{ d.apellidos }} </td>
-                                <td> {{ d.dni }} </td>
+                                <td> {{ d.dni}} </td>
                                 <td> {{ d.direccion }} </td>
-                                <td> {{ d.fecha_nac }} </td>
+                                <td> {{ d.fecha_nac | date:'dd/MM/yyyy h:mma'}} </td>
+                                <td> {{ d.updated_at | date:'dd/MM/yyyy h:mma'}} </td>
                                 <td>
                                     <md-button class="md-icon-button md-td" aria-label="Edit" ui-sref="registro.registro.clienteEdit({id:d.id})">
                                         <md-tooltip md-autohide>Edit {{ d.codename }}</md-tooltip>
