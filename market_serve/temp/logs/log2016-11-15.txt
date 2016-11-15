@@ -1,0 +1,10 @@
+[2016-11-15 10:52:41] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-15 11:01:55] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-15 11:08:58] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-15 11:12:53] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-15 11:19:11] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-15 11:19:46] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-15 11:28:07] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-15 11:35:26] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-15 11:58:54] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-15 12:01:05] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated

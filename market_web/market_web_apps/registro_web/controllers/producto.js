@@ -2,7 +2,7 @@ app
 // =========================================================================
 // Show View and Delete Categoria 
 // =========================================================================
-    .controller("ProductoaCtrl", function($scope, $state, $stateParams, RegistroService, $window, $mdDialog, $log, toastr) {
+    .controller("ProductoCtrl", function($scope, $state, $stateParams, RegistroService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
     $scope.fields = 'name,codename';
     var params = {};

@@ -77,7 +77,7 @@ class ClienteViewSet(ModelPagination, viewsets.ModelViewSet):
 
     @list_route(url_path='export', methods=['get'],
                 permission_classes=[MiPermission])
-    def reporte_clientees(self, request, *args, **kwargs):
+    def reporte_clientes(self, request, *args, **kwargs):
         lista = []
         pre_query = self.get_queryset().values()
         for x in pre_query:

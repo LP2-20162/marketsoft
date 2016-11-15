@@ -106,7 +106,7 @@ app
                 type: 'link'
             }, {
                 title: 'Distribuidores',
-                state: 'registro.registro.distribuidores',
+                state: 'registro.registro.distribuidor',
                 type: 'link'
             }, ]
         }]

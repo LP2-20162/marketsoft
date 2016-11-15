@@ -23,3 +23,6 @@
 [2016-11-14 22:41:00] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
 [2016-11-14 22:42:18] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
 [2016-11-14 22:47:03] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-14 22:57:50] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-14 23:04:52] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated
+[2016-11-14 23:25:12] [INFO] [market_service_apps.auths_api.user_view:77] [/api/auths/localuserinfo/] [127.0.0.1] [admin] [GET] User is authenticated

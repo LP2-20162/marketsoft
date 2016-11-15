@@ -81,7 +81,7 @@ app
             RegistroService.Cliente.save($scope.cliente, function(r) {
                 $log.log("r: " + JSON.stringify(r));
                 toastr.success('Se insertó cliente ' + r.nombre, 'Cliente');
-                $state.go('Registro.Registro.Cliente');
+                $state.go('Registro.Registro.cliente');
             }, function(err) {
                 $log.log("Error in save:" + JSON.stringify(err));
                 toastr.error(err.data.detail, err.status + ' ' + err.statusText);
