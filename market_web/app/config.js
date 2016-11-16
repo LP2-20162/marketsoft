@@ -202,4 +202,29 @@ app.constant('ROUTERS', [{
         },
         "templateUrl": "market_web_apps/registro_web/views/distribuidor/form.html"
     }
+},{
+    "registro.registro.marca": {
+        "url": "/marca",
+        "data": {
+            "section": "Registro",
+            "page": "Marca"
+        },
+        "templateUrl": "market_web_apps/registro_web/views/Marca/index.html"
+    },
+    "registro.registro.marcaNew": {
+        "url": "/marca/new",
+        "data": {
+            "section": "Registro",
+            "page": "Marca"
+        },
+        "templateUrl": "market_web_apps/registro_web/views/marca/form.html"
+    },
+    "registro.registro.marcaEdit": {
+        "url": "/marca/:id/edit",
+        "data": {
+            "section": "Registro",
+            "page": "Marca"
+        },
+        "templateUrl": "market_web_apps/registro_web/views/marca/form.html"
+    }
 },]);
