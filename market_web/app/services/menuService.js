@@ -108,7 +108,11 @@ app
                 title: 'Distribuidores',
                 state: 'registro.registro.distribuidor',
                 type: 'link'
-            }, ]
+            }, {
+                title: 'Marcas',
+                state: 'registro.registro.marca',
+                type: 'link'
+            },]
         }]
     });
 
