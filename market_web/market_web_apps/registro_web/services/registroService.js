@@ -75,7 +75,7 @@ app
             }
 
         }),
-        Producto: $resource(url + "marca/:id/", { 'id': '@id' }, {
+        Marca: $resource(url + "marca/:id/", { 'id': '@id' }, {
             "update": { method: 'PUT' },
             "query": {
                 method: 'GET',
