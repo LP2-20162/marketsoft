@@ -227,4 +227,29 @@ app.constant('ROUTERS', [{
         },
         "templateUrl": "market_web_apps/registro_web/views/marca/form.html"
     }
+},{
+    "registro.registro.compra": {
+        "url": "/compra",
+        "data": {
+            "section": "Registro",
+            "page": "Comra"
+        },
+        "templateUrl": "market_web_apps/registro_web/views/compra/index.html"
+    },
+    "registro.registro.compraNew": {
+        "url": "/compra/new",
+        "data": {
+            "section": "Registro",
+            "page": "Compra"
+        },
+        "templateUrl": "market_web_apps/registro_web/views/compra/form.html"
+    },
+    "registro.registro.compraEdit": {
+        "url": "/compra:id/edit",
+        "data": {
+            "section": "Registro",
+            "page": "Compra"
+        },
+        "templateUrl": "market_web_apps/registro_web/views/compra/form.html"
+    }
 },]);

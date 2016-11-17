@@ -112,6 +112,10 @@ app
                 title: 'Marcas',
                 state: 'registro.registro.marca',
                 type: 'link'
+            }, {
+                title: 'Compra',
+                state: 'registro.registro.compra',
+                type: 'link'
             },]
         }]
     });
