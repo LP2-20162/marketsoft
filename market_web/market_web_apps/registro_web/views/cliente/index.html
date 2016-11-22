@@ -43,7 +43,7 @@
                                 <th class="col-hidden" data-order="apellidos">apellidos</th>
                                 <th class="col-hidden" data-order="dni">dni</th>
                                 <th class="col-hidden" data-order="codigo">direccion</th>
-                                <th>fecha_nac</th>
+                                
                                 <th>updated_at</th>
                                 <th colspan="2" class="align-options">acciones</th>
                             </tr>
@@ -55,7 +55,7 @@
                                 <td> {{ d.apellidos }} </td>
                                 <td> {{ d.dni}} </td>
                                 <td> {{ d.direccion }} </td>
-                                <td> {{ d.fecha_nac | date:'dd/MM/yyyy h:mma'}} </td>
+                                
                                 <td> {{ d.updated_at | date:'dd/MM/yyyy h:mma'}} </td>
                                 <td>
                                     <md-button class="md-icon-button md-td" aria-label="Edit" ui-sref="registro.registro.clienteEdit({id:d.id})">

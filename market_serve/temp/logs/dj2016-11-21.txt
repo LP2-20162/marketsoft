@@ -1,0 +1,7 @@
+[2016-11-21 20:11:12] DEBUG [django.db.backends:90] (0.002) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-11-21 20:11:12] DEBUG [django.db.backends:90] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[2016-11-21 20:19:14] DEBUG [django.db.backends:90] (0.001) SELECT "auths_menu"."router_json" FROM "auths_menu" ORDER BY "auths_menu"."pos" ASC; args=()
+[2016-11-21 20:19:14] INFO [django.server:131] "GET /api/auths/routers/ HTTP/1.1" 200 2

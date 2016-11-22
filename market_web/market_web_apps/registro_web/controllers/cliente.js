@@ -69,7 +69,7 @@ app
 
     $scope.save = function() {
         if ($scope.cliente.id) {
-            RegistroService.Clienter.update({ id: $scope.cliente.id }, $scope.cliente, function(r) {
+            RegistroService.Cliente.update({ id: $scope.cliente.id }, $scope.cliente, function(r) {
                 $log.log("r: " + JSON.stringify(r));
                 toastr.success('Se editó cliente ' + r.nombre, 'Cliente');
                 $state.go('Registro.Registro.cliente');
