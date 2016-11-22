@@ -49,7 +49,7 @@ app
 })
 
 // =========================================================================
-// Create and Update Autor
+// Create and Update 
 // =========================================================================
 .controller("DistribuidorSaveCtrl", function($scope, $state, $stateParams, RegistroService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
@@ -69,7 +69,7 @@ app
 
     $scope.save = function() {
         if ($scope.distribuidor.id) {
-            RegistroService.Distribuidorr.update({ id: $scope.distribuidor.id }, $scope.distribuidor, function(r) {
+            RegistroService.Distribuidor.update({ id: $scope.distribuidor.id }, $scope.distribuidor, function(r) {
                 $log.log("r: " + JSON.stringify(r));
                 toastr.success('Se editó distribuidor ' + r.nombre, 'Distribuidor');
                 $state.go('Registro.Registro.distribuidor');

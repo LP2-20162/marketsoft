@@ -1,6 +1,6 @@
 app
 // =========================================================================
-// Show View and Delete Autor 
+// 
 // =========================================================================
     .controller("MarcaCtrl", function($scope, $state, $stateParams, RegistroService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
@@ -49,7 +49,7 @@ app
 })
 
 // =========================================================================
-// Create and Update Autor
+// Create and Update 
 // =========================================================================
 .controller("MarcaSaveCtrl", function($scope, $state, $stateParams, RegistroService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
@@ -69,7 +69,7 @@ app
 
     $scope.save = function() {
         if ($scope.marca.id) {
-            RegistroService.Marcar.update({ id: $scope.marca.id }, $scope.marca, function(r) {
+            RegistroService.Marca.update({ id: $scope.marca.id }, $scope.marca, function(r) {
                 $log.log("r: " + JSON.stringify(r));
                 toastr.success('Se editó marca ' + r.nombre, 'Marca');
                 $state.go('Registro.Registro.marca');

@@ -8,7 +8,7 @@ class Cliente(models.Model):
     apellidos = models.CharField(max_length=100)
     dni = models.IntegerField()
     direccion = models.TextField(null=True, blank=True)
-    fecha_nac = models.DateField(null=True, blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
