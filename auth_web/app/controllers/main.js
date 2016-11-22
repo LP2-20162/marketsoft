@@ -5,7 +5,7 @@ app
 
     // config
     $scope.app = {
-        name: 'AUTH',
+        name: 'MARKETSOFT',
         version: '1.0.1',
 
         setting: {
