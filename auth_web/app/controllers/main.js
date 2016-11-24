@@ -11,7 +11,7 @@ app
         setting: {
             theme: {
                 primary: 'indigo',
-                accent: 'purple',
+                accent: 'green',
                 warn: 'amber'
             },
             asideFolded: false

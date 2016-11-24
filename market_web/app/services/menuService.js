@@ -1,4 +1,5 @@
 
+
 app
 //------------------------------
 // TODO: API menu
@@ -66,15 +67,15 @@ app
             type: 'toggle',
             state: 'auths.system',
             menu_items: [{
-                title: 'xx',
-                state: 'auths.system.xx',
+                title: 'marketsoft',
+                state: 'auths.system.marketsoft',
                 type: 'link'
             }, {
                 title: 'Grupos',
                 state: 'auths.system.ct',
                 type: 'link'
             }, {
-                title: 'Permission',
+                title: 'Permiso',
                 state: 'auths.system.permission',
                 type: 'link'
             }, {

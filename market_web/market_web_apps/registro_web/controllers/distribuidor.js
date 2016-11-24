@@ -72,7 +72,7 @@ app
             RegistroService.Distribuidor.update({ id: $scope.distribuidor.id }, $scope.distribuidor, function(r) {
                 $log.log("r: " + JSON.stringify(r));
                 toastr.success('Se editó distribuidor ' + r.nombre, 'Distribuidor');
-                $state.go('Registro.Registro.distribuidor');
+                $state.go('registro.registro.distribuidor');
             }, function(err) {
                 $log.log("Error in update:" + JSON.stringify(err));
                 toastr.error(err.data.detail, err.status + ' ' + err.statusText);
@@ -81,7 +81,7 @@ app
             RegistroService.Distribuidor.save($scope.distribuidor, function(r) {
                 $log.log("r: " + JSON.stringify(r));
                 toastr.success('Se insertó distribuidor ' + r.nombre, 'Distribuidor');
-                $state.go('Registro.Registro.distribuidor');
+                $state.go('registro.registro.distribuidor');
             }, function(err) {
                 $log.log("Error in save:" + JSON.stringify(err));
                 toastr.error(err.data.detail, err.status + ' ' + err.statusText);
@@ -90,7 +90,7 @@ app
     };
 
     $scope.cancel = function() {
-        $state.go('Registro.Registro.distribuidor');
+        $state.go('registro.registro.distribuidor');
 
 
         
