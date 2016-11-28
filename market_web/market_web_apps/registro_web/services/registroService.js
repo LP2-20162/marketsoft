@@ -118,12 +118,13 @@ app
                         "next": null
                     };
                     
-                    ren { results: results, options: options };
+/*                    ren { results: results, options: options };
                 }
             }
 
         }),
 
-
-    };
+*/
+/*    };
 });
+*/
