@@ -450,3 +450,10 @@
 [2016-11-22 15:30:42] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
 [2016-11-22 15:30:42] DEBUG [django.db.backends:90] (0.086) UPDATE "registro_distribuidor" SET "nombre" = 'MARC SAC', "ruc" = 2011285536, "telefono" = 95251616, "direccion" = 'Jr. lima' WHERE "registro_distribuidor"."id" = 'a42d3ec8900641a0a38bb17571bb18f7'; args=('MARC SAC', 2011285536, 95251616, 'Jr. lima', 'a42d3ec8900641a0a38bb17571bb18f7')
 [2016-11-22 15:30:42] INFO [django.server:131] "PUT /api/registro/distribuidor/a42d3ec8-9006-41a0-a38b-b17571bb18f7/ HTTP/1.1" 200 125
+[2016-11-22 15:33:22] DEBUG [django.db.backends:90] (0.002) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-11-22 15:33:22] DEBUG [django.db.backends:90] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[2016-11-22 15:33:34] DEBUG [django.db.backends:90] (0.002) SELECT "auths_menu"."router_json" FROM "auths_menu" ORDER BY "auths_menu"."pos" ASC; args=()
+[2016-11-22 15:33:34] INFO [django.server:131] "GET /api/auths/routers/ HTTP/1.1" 200 2

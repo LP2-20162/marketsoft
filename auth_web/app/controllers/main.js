@@ -1,4 +1,4 @@
-app
+ app
 
     .controller("MainCtrl", function($scope, $mdSidenav, $timeout, $rootScope, $window,
         $document, $log, $mdBottomSheet, $mdToast) {

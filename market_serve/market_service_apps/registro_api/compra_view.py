@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import list_route
 
 
-from market_service_apps.registro.models.compra import Cabecera
+from market_service_apps.registro.models.compra import Compra
 
 from market_service_apps.utils.security import log_params
 from market_service_apps.utils.permissions import ModelPermission
@@ -39,12 +39,12 @@ class MiPermission(permissions.BasePermission):
 class CompraSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Cabecera
+        model = Compra
         fields = '__all__'
 
 
 class CompraViewSet(ModelPagination, viewsets.ModelViewSet):
-    queryset = Cabecera.objects.all()
+    queryset = Compra.objects.all()
     serializer_class = CompraSerializer
     permission_classes = [ModelPermission, ]
 

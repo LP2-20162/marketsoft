@@ -4,7 +4,7 @@ from .models.cliente import Cliente
 from .models.producto import Producto
 from .models.distribuidor import Distribuidor
 from .models.marca import Marca
-from .models.compra import DetalleCompra
+from .models.compra import Compra
 # Register your models here.
 
 
@@ -37,4 +37,4 @@ class EmpresaAdmin(admin.ModelAdmin):
 
 
 class producto_compraInline(admin.TabularInline):
-    model = DetalleCompra
+    model = Compra
