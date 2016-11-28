@@ -11,8 +11,8 @@ from .models.compra import Compra
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'apellidos', 'dni', 'direccion')
-    search_fields = ('dni', 'nombre', 'apellidos')
-    list_per_page = 3
+    search_fields = ('dni', 'nombre', 'apellidos', 'direccion')
+    list_per_page = 1
 
 
 @admin.register(Producto)
