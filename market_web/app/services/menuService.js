@@ -67,15 +67,15 @@ app
             type: 'toggle',
             state: 'auths.system',
             menu_items: [{
-                title: 'marketsoft',
-                state: 'auths.system.marketsoft',
+                title: 'xx',
+                state: 'auths.system.xx',
                 type: 'link'
             }, {
                 title: 'Grupos',
                 state: 'auths.system.ct',
                 type: 'link'
             }, {
-                title: 'Permiso',
+                title: 'permission',
                 state: 'auths.system.permission',
                 type: 'link'
             }, {

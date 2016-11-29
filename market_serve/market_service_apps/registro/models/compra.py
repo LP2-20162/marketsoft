@@ -20,7 +20,7 @@ class TimeStampModel(models.Model):
 class Cabecera(TimeStampModel):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     trabajador = models.ForeignKey(settings.AUTH_USER_MODEL)
-
+    codigo = models.CharField(max_length=10, unique=True)
     distribuidor = models.ForeignKey(Distribuidor)
     marca = models.ForeignKey(Marca)
     fecha = models.DateField(auto_now_add=True)
@@ -28,6 +28,9 @@ class Cabecera(TimeStampModel):
     class Meta:
         verbose_name = "Compras"
         verbose_name_plural = "Compras"
+
+    def __unicode__(self):
+        return self.codigo
 
 
 class Compra(models.Model):
