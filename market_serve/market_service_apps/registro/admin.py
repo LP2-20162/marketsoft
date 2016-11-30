@@ -5,6 +5,7 @@ from .models.producto import Producto
 from .models.distribuidor import Distribuidor
 from .models.marca import Marca
 from .models.compra import Compra
+
 # Register your models here.
 
 
@@ -36,5 +37,8 @@ class EmpresaAdmin(admin.ModelAdmin):
     list_per_page = 3
 
 
-class producto_compraInline(admin.TabularInline):
-    model = Compra
+@admin.register(Compra)
+class CompraAdmin(admin.ModelAdmin):
+    list_display = ('trabajador', 'distribuidor', 'marca',
+                    'fecha', 'producto', 'cantidad')
+    list_per_page = 3

@@ -17,25 +17,12 @@ class TimeStampModel(models.Model):
         abstract = True
 
 
-class Cabecera(TimeStampModel):
+class Compra(TimeStampModel):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     trabajador = models.ForeignKey(settings.AUTH_USER_MODEL)
-    codigo = models.CharField(max_length=10, unique=True)
     distribuidor = models.ForeignKey(Distribuidor)
     marca = models.ForeignKey(Marca)
     fecha = models.DateField(auto_now_add=True)
-
-    class Meta:
-        verbose_name = "Compras"
-        verbose_name_plural = "Compras"
-
-    def __unicode__(self):
-        return self.codigo
-
-
-class Compra(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    list = models.ForeignKey(Cabecera, related_name='cabecera')
     producto = models.ForeignKey(Producto)
     cantidad = models.IntegerField()
 
