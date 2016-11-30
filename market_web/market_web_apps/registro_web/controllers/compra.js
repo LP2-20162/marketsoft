@@ -1,22 +1,19 @@
 app
 // =========================================================================
-// Show View and Delete Compra 
+// Show View and Delete Autor 
 // =========================================================================
     .controller("CompraCtrl", function($scope, $state, $stateParams, RegistroService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
     $scope.fields = 'id';
     var params = {};
     $scope.lista = [];
-    $scope.compra = {};
-
-    
-    //$window.location = "#" + $location.path();
+    $scope.Compra = {};
 
     $scope.list = function(params) {
         $scope.isLoading = true;
         RegistroService.Compra.query(params, function(r) {
-            $scope.lista = r;
-            //$scope.options = r.options;
+            $scope.lista = r.results;
+            $scope.options = r.options;
             $scope.isLoading = false;
         }, function(err) {
             $log.log("Error in list:" + JSON.stringify(err));
@@ -39,8 +36,8 @@ app
     $scope.delete = function(d) {
         if ($window.confirm("Seguro?")) {
             RegistroService.Compra.delete({ id: d.id }, function(r) {
-                $log.log("Se eliminó la compra:" + JSON.stringify(d));
-                toastr.success('Se eliminó la compra ' + d.nombre, 'Compra');
+                $log.log("Se eliminó Compra:" + JSON.stringify(d));
+                toastr.success('Se eliminó Compra ' + d.nombre, 'Compra');
                 $scope.list(params);
             }, function(err) {
                 $log.log("Error in delete:" + JSON.stringify(err));
@@ -52,15 +49,15 @@ app
 })
 
 // =========================================================================
-// Create and Update Compra
+// Create and Update Autor
 // =========================================================================
 .controller("CompraSaveCtrl", function($scope, $state, $stateParams, RegistroService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
-    $scope.compra = {};
+    $scope.Compra = {};
 
     $scope.sel = function() {
         RegistroService.Compra.get({ id: $stateParams.id }, function(r) {
-            $scope.compra = r;
+            $scope.Compra = r;
         }, function(err) {
             $log.log("Error in get:" + JSON.stringify(err));
             toastr.error(err.data.detail, err.status + ' ' + err.statusText);
@@ -71,20 +68,20 @@ app
     }
 
     $scope.save = function() {
-        if ($scope.compra.id) {
-            RegistroService.Compra.update({ id: $scope.compra.id }, $scope.compra, function(r) {
+        if ($scope.Compra.id) {
+            RegistroService.Compra.update({ id: $scope.Compra.id }, $scope.Compra, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se editó la compra ' + r.nombre, 'Compra');
-                $state.go('registro.registro.compra');
+                toastr.success('Se editó Compra ' + r.nombre, 'Compra');
+                $state.go('Registro.Registro.Compra');
             }, function(err) {
                 $log.log("Error in update:" + JSON.stringify(err));
                 toastr.error(err.data.detail, err.status + ' ' + err.statusText);
             });
         } else {
-            RegistroService.Compra.save($scope.compra, function(r) {
+            RegistroService.Compra.save($scope.Compra, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se insertó la compra ' + r.nombre, 'Compra');
-                $state.go('registro.registro.compra');
+                toastr.success('Se insertó Compra ' + r.nombre, 'Compra');
+                $state.go('Registro.Registro.Compra');
             }, function(err) {
                 $log.log("Error in save:" + JSON.stringify(err));
                 toastr.error(err.data.detail, err.status + ' ' + err.statusText);
@@ -93,6 +90,9 @@ app
     };
 
     $scope.cancel = function() {
-        $state.go('registro.registro.compra');
+        $state.go('Registro.Registro.Compra');
+
+
+        
     };
 });

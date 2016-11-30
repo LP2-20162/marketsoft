@@ -15,7 +15,7 @@
                     <md-card-content>
                         <div layout-gt-sm="row">
                             <md-input-container class="md-block" flex-gt-sm>
-                                <label>trabajador/label>
+                                <label>trabajador</label>
                                 <input name="trabajador" ng-model="compra.trabajador" required>
                                 <div ng-messages="dForm.trabajador.$error">
                                     <div ng-message="required">This is required.</div>
@@ -23,14 +23,14 @@
                             </md-input-container>
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>distribuidor</label>
-                                <input name="distribuidor" ng-model="compra.distribuidor" required>
+                                <input name="distribuidor" ng-model="compra.adistribuidor" required>
                                 <div ng-messages="dForm.distribuidor.$error">
                                     <div ng-message="required">This is required.</div>
                                 </div>
                             </md-input-container>
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>marca</label>
-                                <input name="marca" ng-model="compra.marca" required>
+                                <input name="marca" ng-model="marca.nombre" required>
                                 <div ng-messages="dForm.marca.$error">
                                     <div ng-message="required">This is required.</div>
                                 </div>
@@ -44,7 +44,7 @@
                             </md-input-container>
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>producto</label>
-                                <input name="producto" ng-model="compra.producto" required>
+                                <input name="producto" ng-model="producto.producto" required>
                                 <div ng-messages="dForm.producto.$error">
                                     <div ng-message="required">This is required.</div>
                                 </div>
@@ -56,7 +56,6 @@
                                     <div ng-message="required">This is required.</div>
                                 </div>
                             </md-input-container>
-                            
                         </div>
                        
                     </md-card-content>
