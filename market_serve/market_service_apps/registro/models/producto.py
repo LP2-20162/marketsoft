@@ -13,14 +13,9 @@ class Producto(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
 
-    TIPO = (
-        ('peresible', 'Peresible'),
-        ('No peresible', 'No peresible'),
-    )
-    lote = models.CharField(max_length=10, unique=True, default=0)
     presentancion = models.CharField(max_length=50)
     nombre = models.CharField(max_length=200, unique=True)
-    sanitario = models.CharField(max_length=200)
+
     fecha_expiracion = models.DateField()
     fecha_produccion = models.DateField()
     descripcion = models.TextField(max_length=400)
