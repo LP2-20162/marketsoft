@@ -8,29 +8,26 @@
                             <img class="md-user-avatar" src="media/img/list/60.jpeg" />
                         </md-card-avatar>
                         <md-card-header-text>
-                           
                             <span class="md-headline">Producto</span>
-                            <span class="md-subhead">Trabajar con producto</span>
+                            <span class="md-subhead">Trabajar con productos</span>
                         </md-card-header-text>
                     </md-card-header>
                     <md-card-content>
                         <div layout-gt-sm="row">
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <md-input-container class="md-block" flex-gt-sm>
-                                <label>Nombre</label>
-                                <input name="nombre" ng-model="producto.nombre">
-                            </md-input-container>
-
-                            </md-input-container>
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Presentancion</label>
                                 <input name="presentancion" ng-model="producto.presentancion" required>
-                                <div ng-messages="dForm.presentancio.$error">
+                                <div ng-messages="dForm.presentancion.$error">
                                     <div ng-message="required">This is required.</div>
                                 </div>
                             </md-input-container>
-
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>nombre</label>
+                                <input name="nombre" ng-model="producto.nombre" required>
+                                <div ng-messages="dForm.nombre.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Fecha_expiracion</label>
                                 <input name="fecha_expiracion" ng-model="producto.fecha_expiracion" required>
@@ -38,7 +35,6 @@
                                     <div ng-message="required">This is required.</div>
                                 </div>
                             </md-input-container>
-                        
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Fecha_produccion</label>
                                 <input name="fecha_produccion" ng-model="producto.fecha_produccion" required>
@@ -49,13 +45,12 @@
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Descripcion</label>
                                 <input name="descripcion" ng-model="producto.descripcion" required>
-                                <div ng-messages="dForm.Descripcion.$error">
+                                <div ng-messages="dForm.descripcion.$error">
                                     <div ng-message="required">This is required.</div>
                                 </div>
                             </md-input-container>
-                            
                             <md-input-container class="md-block" flex-gt-sm>
-                                <label>precio_Compra</label>
+                                <label>Precio_Compra</label>
                                 <input name="precio_Compra" ng-model="producto.precio_Compra" required>
                                 <div ng-messages="dForm.precio_Compra.$error">
                                     <div ng-message="required">This is required.</div>
@@ -69,16 +64,14 @@
                                 </div>
                             </md-input-container>
                             <md-input-container class="md-block" flex-gt-sm>
-                                <label>stock</label>
+                                <label>Stock</label>
                                 <input name="stock" ng-model="producto.stock" required>
-                                <div ng-messages="dForm.lote.$error">
+                                <div ng-messages="dForm.stock.$error">
                                     <div ng-message="required">This is required.</div>
                                 </div>
                             </md-input-container>
-                        </md-input-container>
-                    </md-input-container>
                         </div>
-                        
+                       
                     </md-card-content>
                     <md-divider></md-divider>
                     <md-card-actions layout="row" layout-xs="column" layout-align="start center">
