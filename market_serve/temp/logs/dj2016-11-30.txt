@@ -426,3 +426,8 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "
 [2016-11-30 22:34:26] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
 [2016-11-30 22:34:26] DEBUG [django.db.backends:90] (0.004) INSERT INTO "django_session" ("session_key", "session_data", "expire_date") SELECT '5ulrgv74v95k9lxvpg4wvjafykwqmrrb', 'Y2U1MDdhOTVhY2Y1M2EzOGYyOTc1YmE0OTQ4NTlmMWJkODNmMmEzMjp7Il9zZXNzaW9uX2V4cGlyeSI6MzB9', '2016-12-01 06:34:56.802303'; args=('5ulrgv74v95k9lxvpg4wvjafykwqmrrb', 'Y2U1MDdhOTVhY2Y1M2EzOGYyOTc1YmE0OTQ4NTlmMWJkODNmMmEzMjp7Il9zZXNzaW9uX2V4cGlyeSI6MzB9', '2016-12-01 06:34:56.802303')
 [2016-11-30 22:34:26] INFO [django.server:131] "GET /api/auths/usermenu/ HTTP/1.1" 200 11
+[2016-11-30 22:49:53] DEBUG [django.db.backends:90] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-11-30 22:49:53] DEBUG [django.db.backends:90] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()

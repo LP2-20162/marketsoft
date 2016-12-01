@@ -118,7 +118,7 @@ app
                         "next": null
                     };
                     
-                    ren { results: results, options: options };
+                    return { results: results, options: options };
                 }
             }
 

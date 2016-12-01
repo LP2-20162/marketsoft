@@ -1,4 +1,4 @@
-div ng-cloak>
+<div ng-cloak>
     <md-content class="md-padding" layout-xs="column" layout="row">
         <div flex-xs flex-gt-xs="100" layout="column">
             <md-card ng-controller="ProductoCtrl">
@@ -7,8 +7,8 @@ div ng-cloak>
                         <img class="md-user-avatar" src="media/img/list/60.jpeg" />
                     </md-card-avatar>
                     <md-card-header-text>
-                        <span class="md-headline">Producto</span>
-                        <span class="md-subhead">Trabajar con poducto</span>
+                        <span class="md-headline">Productos</span>
+                        <span class="md-subhead">Trabajar con productos</span>
                     </md-card-header-text>
                 </md-card-header>
                 <md-divider></md-divider>
@@ -28,37 +28,37 @@ div ng-cloak>
                         </md-card-actions>
                         
                 <md-card-content>
+               
+                <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+  
+
                     
                     <table table-responsive>
                         
-                        <md-progress-linear layout-fill md-mode="indeterminate" ng-hide="!isLoading"></md-progress-linear>
+                        
                         <thead md-on-reorder="onReorder">
                             <tr>
                                 <th>#</th>
+                                <th class="col-hidden" data-order="presentancion">presentancion</th>
                                 <th class="col-hidden" data-order="nombre">nombre</th>
-                                <th class="col-hidden" data-order="lote">lote</th>
-                                <th class="col-hidden" data-order="presentancio">presentancio</th>
-                                <th class="col-hidden" data-order="sanitario">sanitario</th>
                                 <th class="col-hidden" data-order="fecha_expiracion">fecha_expiracion</th>
-                                <th class="col-hidden" data-order="fecha_produccion">fecha_produccion</th>
-                                <th class="col-hidden" data-order="Descripcion">Descripcion</th>
+                                <th class="col-hidden" data-order="descripcion">descripcion</th>
                                 <th class="col-hidden" data-order="precio_venta">precio_venta</th>
                                 <th class="col-hidden" data-order="stock">stock</th>
+                                
                                 <th colspan="2" class="align-options">acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="d in lista">
-                                <td> {{ $index + 1 }} </td>
+                                <td> {{ (options.page - 1) * options.page_size +$index +1 }} </td>
                                 <td> {{ d.nombre }} </td>
-                                <td> {{ d.lote }} </td>
-                                <td> {{ d.presentancio }} </td>
-                                <td> {{ d.sanitarioestado }} </td>
-                                <td> {{ d.fecha_expiracion }} </td>
-                                <td> {{ d.fecha_produccion }} </td>
-                                <td> {{ d.Descripcion }} </td>
-                                <td> {{ d.precio_venta }} </td>
-                                <td> {{ d.stock }} </td>
+                                <td> {{ d.presentancion }} </td>
+                                <td> {{ d.fecha_expiracion}} </td>
+                                <td> {{ d.descripcion}} </td>
+                                <td> {{ d.precio_venta}} </td>
+                                <td> {{ d.stock}} </td>
+                                
                                 <td>
                                     <md-button class="md-icon-button md-td" aria-label="Edit" ui-sref="registro.registro.productoEdit({id:d.id})">
                                         <md-tooltip md-autohide>Edit {{ d.codename }}</md-tooltip>
@@ -73,6 +73,7 @@ div ng-cloak>
                                 </td>
                             </tr>
                         </tbody>
+                        
                     </table>
 
 
@@ -80,15 +81,9 @@ div ng-cloak>
 
                     </md-table-container>
                     <md-table-pagination>
-                        <table>
-                            <tfoot>
-                                <tr>
-                                    <td>
+                        
                                         <app-pagination ng-if="options.pages>0" per="options.page_size" page="options.page" format="{{'jumping'}}" display="4" rango="options.range" accion="list(params)" pages="options.pages" query="query" fields="{{fields}}"></app-pagination>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
+                                    
                     </md-table-pagination>
                 </md-card-content>
             </md-card>

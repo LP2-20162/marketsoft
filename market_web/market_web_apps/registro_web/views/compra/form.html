@@ -15,13 +15,49 @@
                     <md-card-content>
                         <div layout-gt-sm="row">
                             <md-input-container class="md-block" flex-gt-sm>
-                                <label>Trabajador</label>
+                                <label>trabajador</label>
                                 <input name="trabajador" ng-model="compra.trabajador" required>
                                 <div ng-messages="dForm.trabajador.$error">
                                     <div ng-message="required">This is required.</div>
                                 </div>
                             </md-input-container>
-                            
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>distribuidor</label>
+                                <input name="distribuidor" ng-model="compra.adistribuidor" required>
+                                <div ng-messages="dForm.distribuidor.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>marca</label>
+                                <input name="marca" ng-model="marca.nombre" required>
+                                <div ng-messages="dForm.marca.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>fecha</label>
+                                <input name="fecha" ng-model="compra.fecha" required>
+                                <div ng-messages="dForm.fecha.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>producto</label>
+                                <input name="producto" ng-model="producto.producto" required>
+                                <div ng-messages="dForm.producto.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>cantidad</label>
+                                <input name="cantidad" ng-model="compra.cantidad" required>
+                                <div ng-messages="dForm.cantidad.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                       
                     </md-card-content>
                     <md-divider></md-divider>
                     <md-card-actions layout="row" layout-xs="column" layout-align="start center">

@@ -1,22 +1,19 @@
 app
 // =========================================================================
-
+// Show View and Delete Autor 
 // =========================================================================
     .controller("ProductoCtrl", function($scope, $state, $stateParams, RegistroService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
-    $scope.fields = 'name,codename';
+    $scope.fields = 'nombre';
     var params = {};
     $scope.lista = [];
     $scope.producto = {};
 
-    
-    //$window.location = "#" + $location.path();
-
     $scope.list = function(params) {
         $scope.isLoading = true;
         RegistroService.Producto.query(params, function(r) {
-            $scope.lista = r;
-            //$scope.options = r.options;
+            $scope.lista = r.results;
+            $scope.options = r.options;
             $scope.isLoading = false;
         }, function(err) {
             $log.log("Error in list:" + JSON.stringify(err));
@@ -39,8 +36,8 @@ app
     $scope.delete = function(d) {
         if ($window.confirm("Seguro?")) {
             RegistroService.Producto.delete({ id: d.id }, function(r) {
-                $log.log("Se eliminó la prroducto:" + JSON.stringify(d));
-                toastr.success('Se eliminó la producto ' + d.nombre, 'Producto');
+                $log.log("Se eliminó producto:" + JSON.stringify(d));
+                toastr.success('Se eliminó producto ' + d.nombre, 'Producto');
                 $scope.list(params);
             }, function(err) {
                 $log.log("Error in delete:" + JSON.stringify(err));
@@ -52,11 +49,11 @@ app
 })
 
 // =========================================================================
-// Create and Update Categoria
+// Create and Update Autor
 // =========================================================================
 .controller("ProductoSaveCtrl", function($scope, $state, $stateParams, RegistroService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
-    $scope.Producto = {};
+    $scope.producto = {};
 
     $scope.sel = function() {
         RegistroService.Producto.get({ id: $stateParams.id }, function(r) {
@@ -74,7 +71,7 @@ app
         if ($scope.producto.id) {
             RegistroService.Producto.update({ id: $scope.producto.id }, $scope.producto, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se editó la producto ' + r.nombre, 'Producto');
+                toastr.success('Se editó producto ' + r.nombre, 'Producto');
                 $state.go('Registro.Registro.producto');
             }, function(err) {
                 $log.log("Error in update:" + JSON.stringify(err));
@@ -83,7 +80,7 @@ app
         } else {
             RegistroService.Producto.save($scope.producto, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se insertó la producto ' + r.nombre, 'Producto');
+                toastr.success('Se insertó producto ' + r.nombre, 'Producto');
                 $state.go('Registro.Registro.producto');
             }, function(err) {
                 $log.log("Error in save:" + JSON.stringify(err));
@@ -94,5 +91,8 @@ app
 
     $scope.cancel = function() {
         $state.go('Registro.Registro.producto');
+
+
+        
     };
 });

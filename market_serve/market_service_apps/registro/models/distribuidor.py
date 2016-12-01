@@ -7,7 +7,7 @@ class Distribuidor(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
 
     nombre = models.CharField(max_length=20)
-    ruc = models.IntegerField(unique=True)
+    ruc = models.IntegerField()
     telefono = models.IntegerField(unique=True)
     direccion = models.CharField(max_length=60)
 

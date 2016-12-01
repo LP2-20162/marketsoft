@@ -4,7 +4,8 @@ from .models.cliente import Cliente
 from .models.producto import Producto
 from .models.distribuidor import Distribuidor
 from .models.marca import Marca
-from .models.compra import DetalleCompra
+from .models.compra import Compra
+
 # Register your models here.
 
 
@@ -12,12 +13,12 @@ from .models.compra import DetalleCompra
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'apellidos', 'dni', 'direccion')
     search_fields = ('dni', 'nombre', 'apellidos', 'direccion')
-    list_per_page = 1
+    list_per_page = 3
 
 
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ('lote', 'presentancion', 'TIPO', 'nombre', 'descripcion', 'fecha_expiracion',
+    list_display = ('presentancion',  'nombre', 'descripcion', 'fecha_expiracion',
                     'fecha_produccion',  'precio_Compra', 'precio_venta', 'stock')
     search_fields = ('nombre', 'descripcion')
     list_per_page = 3
@@ -36,5 +37,8 @@ class EmpresaAdmin(admin.ModelAdmin):
     list_per_page = 3
 
 
-class producto_compraInline(admin.TabularInline):
-    model = DetalleCompra
+@admin.register(Compra)
+class CompraAdmin(admin.ModelAdmin):
+    list_display = ('trabajador', 'distribuidor', 'marca',
+                    'fecha', 'producto', 'cantidad')
+    list_per_page = 3

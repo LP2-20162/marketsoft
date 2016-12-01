@@ -17,25 +17,12 @@ class TimeStampModel(models.Model):
         abstract = True
 
 
-class Cabecera(TimeStampModel):
+class Compra(TimeStampModel):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     trabajador = models.ForeignKey(settings.AUTH_USER_MODEL)
-    codigo = models.CharField(max_length=10, unique=True)
     distribuidor = models.ForeignKey(Distribuidor)
     marca = models.ForeignKey(Marca)
     fecha = models.DateField(auto_now_add=True)
-
-    class Meta:
-        verbose_name = "Compras"
-        verbose_name_plural = "Compras"
-
-    def __unicode__(self):
-        return self.codigo
-
-
-class DetalleCompra(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    list = models.ForeignKey(Cabecera, related_name='cabecera')
     producto = models.ForeignKey(Producto)
     cantidad = models.IntegerField()
 
@@ -52,4 +39,4 @@ def update_stock(sender, instance, **kwargs):
 
 # register the signal
 signals.post_save.connect(
-    update_stock, sender=DetalleCompra, dispatch_uid="update_stock_count")
+    update_stock, sender=Compra, dispatch_uid="update_stock_count")
