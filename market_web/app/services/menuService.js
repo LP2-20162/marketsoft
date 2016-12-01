@@ -117,6 +117,10 @@ app
                 title: 'Compra',
                 state: 'registro.registro.compra',
                 type: 'link'
+            },{
+                title: 'Ventas',
+                state: 'registro.registro.venta',
+                type: 'link'
             },]
         }]
     });

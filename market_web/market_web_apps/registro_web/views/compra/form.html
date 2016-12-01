@@ -8,56 +8,57 @@
                             <img class="md-user-avatar" src="media/img/list/60.jpeg" />
                         </md-card-avatar>
                         <md-card-header-text>
+                           
                             <span class="md-headline">Compra</span>
-                            <span class="md-subhead">Trabajar con compras</span>
+                            <span class="md-subhead">Compra</span>
                         </md-card-header-text>
                     </md-card-header>
                     <md-card-content>
                         <div layout-gt-sm="row">
+                              
+                            
                             <md-input-container class="md-block" flex-gt-sm>
-                                <label>trabajador</label>
-                                <input name="trabajador" ng-model="compra.trabajador" required>
-                                <div ng-messages="dForm.trabajador.$error">
-                                    <div ng-message="required">This is required.</div>
-                                </div>
+                            <label>trabajador</label>
+                                <md-select ng-model="compra.trabajador" required>
+                                    <md-option ng-repeat="c in strabajador" ng-value="c.id">{{c.m_trabajador}}</md-option>
+                                </md-select>
                             </md-input-container>
+
                             <md-input-container class="md-block" flex-gt-sm>
-                                <label>distribuidor</label>
-                                <input name="distribuidor" ng-model="distribuidor.nombre" required>
-                                <div ng-messages="dForm.nombre.$error">
-                                    <div ng-message="required">This is required.</div>
-                                </div>
+                            <label>distribuidor</label>
+                                <md-select ng-model="compra.distribuidor" required>
+                                    <md-option ng-repeat="c in distribuidores" ng-value="c.id">{{c.m_distribuidor}}</md-option>
+                                </md-select>
                             </md-input-container>
+
                             <md-input-container class="md-block" flex-gt-sm>
-                                <label>marca</label>
-                                <input name="marca" ng-model="compra.marca" required>
-                                <div ng-messages="dForm.marca.$error">
-                                    <div ng-message="required">This is required.</div>
-                                </div>
+                            <label>marca</label>
+                                <md-select ng-model="compra.marca" required>
+                                    <md-option ng-repeat="c in marcas" ng-value="c.id">{{c.m_marca}}</md-option>
+                                </md-select>
                             </md-input-container>
+
+                            <md-input-container class="md-block">
+                               <md-checkbox ng-model="compra.fecha" aria-label="fecha">
+                               fecha
+                               </md-checkbox>
+                            </md-input-container>
+
                             <md-input-container class="md-block" flex-gt-sm>
-                                <label>fecha</label>
-                                <input name="fecha" ng-model="compra.fecha" required>
-                                <div ng-messages="dForm.fecha.$error">
-                                    <div ng-message="required">This is required.</div>
-                                </div>
+                            <label>producto</label>
+                                <md-select ng-model="compra.producto" required>
+                                    <md-option ng-repeat="c in productos" ng-value="c.id">{{c.m_producto}}</md-option>
+                                </md-select>
                             </md-input-container>
-                            <md-input-container class="md-block" flex-gt-sm>
-                                <label>producto</label>
-                                <input name="producto" ng-model="compra.producto" required>
-                                <div ng-messages="dForm.compra.$error">
-                                    <div ng-message="required">This is required.</div>
-                                </div>
+
+                            <md-input-container class="md-block">
+                               <md-checkbox ng-model="compra.cantidad" aria-label="cantidad">
+                               cantidad
+                               </md-checkbox>
                             </md-input-container>
-                            <md-input-container class="md-block" flex-gt-sm>
-                                <label>cantidad</label>
-                                <input name="cantidad" ng-model="compra.cantidad" required>
-                                <div ng-messages="dForm.cantidad.$error">
-                                    <div ng-message="required">This is required.</div>
-                                </div>
-                            </md-input-container>
+                          
                         </div>
-                       
+                        
                     </md-card-content>
                     <md-divider></md-divider>
                     <md-card-actions layout="row" layout-xs="column" layout-align="start center">

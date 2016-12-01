@@ -5,7 +5,7 @@ from market_service_apps.registro.models.cliente import Cliente
 class ClienteSerializer(serializers.ModelSerializer):
 
     persona_nombre = serializers.ReadOnlyField(
-        source='persona.nombre')
+        source='cliente.nombre')
 
     class Meta:
 

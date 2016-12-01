@@ -1,22 +1,19 @@
 app
 // =========================================================================
-// Show View and Delete Colegio 
+// Show View and Delete Autor 
 // =========================================================================
-    .controller("CompraCtrl", function($scope, $state, $stateParams, registroService, $window, $mdDialog, $log, toastr) {
+    .controller("VentaCtrl", function($scope, $state, $stateParams, RegistroService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
-    $scope.fields = 'codename';
+    $scope.fields = 'id';
     var params = {};
     $scope.lista = [];
-    $scope.compra= {};
-
-    
-    //$window.location = "#" + $location.path();
+    $scope.Cabecera_Venta = {};
 
     $scope.list = function(params) {
         $scope.isLoading = true;
-        registroService.Compra.query(params, function(r) {
-            $scope.lista = r;
-            //$scope.options = r.options;
+        RegistroService.Cabecera_Venta.query(params, function(r) {
+            $scope.lista = r.results;
+            $scope.options = r.options;
             $scope.isLoading = false;
         }, function(err) {
             $log.log("Error in list:" + JSON.stringify(err));
@@ -37,10 +34,10 @@ app
     };
 
     $scope.delete = function(d) {
-        if ($window.confirm("¿Estas seguro de eliminar?")) {
-            registroService.Compra.delete({ id: d.id }, function(r) {
-                $log.log("Se eliminó la compra:" + JSON.stringify(d));
-                toastr.success('Se eliminó el compra ' + d.trabajador, 'Compra');
+        if ($window.confirm("Seguro?")) {
+            RegistroService.Cabecera_Venta.delete({ id: d.id }, function(r) {
+                $log.log("Se eliminó Cabecera_Venta:" + JSON.stringify(d));
+                toastr.success('Se eliminó Cabecera_Venta ' + d.id, 'Cabecera_Venta');
                 $scope.list(params);
             }, function(err) {
                 $log.log("Error in delete:" + JSON.stringify(err));
@@ -52,36 +49,15 @@ app
 })
 
 // =========================================================================
-// Create and Update Colegio
+// Create and Update Autor
 // =========================================================================
-.controller("CompraSaveCtrl", function($scope, $state, $stateParams, registroService, $window, $mdDialog, $log, toastr) {
+.controller("VentaSaveCtrl", function($scope, $state, $stateParams, RegistroService, $window, $mdDialog, $log, toastr) {
     //Valores iniciales
-    $scope.compra = {};
-    $scope.distribuidor = [];
-    $scope.marca = [];
-    $scope.producto = [];
-    
-
-
-    $scope.getData = function(){
-        
-
-        registroService.Distribuidor.query(function(r){
-            $scope.distribuidor = r;
-        });
-        registroService.Marca.query(function(r){
-            $scope.marca = r;
-        });
-        registroService.Producto.query(function(r){
-            $scope.producto = r;
-        });
-    };
-
-
+    $scope.Cabecera_Venta = {};
 
     $scope.sel = function() {
-        registroService.Compra.get({ id: $stateParams.id }, function(r) {
-            $scope.Compra = r;
+        RegistroService.Cabecera_Venta.get({ id: $stateParams.id }, function(r) {
+            $scope.Cabecera_Venta = r;
         }, function(err) {
             $log.log("Error in get:" + JSON.stringify(err));
             toastr.error(err.data.detail, err.status + ' ' + err.statusText);
@@ -92,20 +68,20 @@ app
     }
 
     $scope.save = function() {
-        if ($scope.compra.id) {
-            registroService.Compra.update({ id: $scope.compra.id }, $scope.compra, function(r) {
+        if ($scope.Cabecera_Venta.id) {
+            RegistroService.Cabecera_Venta.update({ id: $scope.Cabecera_Venta.id }, $scope.Cabecera_Venta, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se editó el compra ' + r.id, 'Compra');
-                $state.go('registro.registro.compra');
+                toastr.success('Se editó Venta ' + r.id, 'Venta');
+                $state.go('Registro.Registro.Venta');
             }, function(err) {
                 $log.log("Error in update:" + JSON.stringify(err));
                 toastr.error(err.data.detail, err.status + ' ' + err.statusText);
             });
         } else {
-            registroService.Compra.save($scope.compra, function(r) {
+            RegistroService.Cabecera_Venta.save($scope.Cabecera_Venta, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se insertó el compra ' + r.id, 'Comprar');
-                $state.go('registro.registro.compra');
+                toastr.success('Se insertó Venta ' + r.id, 'Venta');
+                $state.go('Registro.Registro.Venta');
             }, function(err) {
                 $log.log("Error in save:" + JSON.stringify(err));
                 toastr.error(err.data.detail, err.status + ' ' + err.statusText);
@@ -114,6 +90,9 @@ app
     };
 
     $scope.cancel = function() {
-        $state.go('registro.registro.compra');
+        $state.go('Registro.Registro.Venta');
+
+
+        
     };
 });

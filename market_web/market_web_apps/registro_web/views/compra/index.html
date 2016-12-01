@@ -7,14 +7,14 @@
                         <img class="md-user-avatar" src="media/img/list/60.jpeg" />
                     </md-card-avatar>
                     <md-card-header-text>
-                        <span class="md-headline">Compras</span>
-                        <span class="md-subhead">Trabajar con Compras</span>
+                        <span class="md-headline">Compra</span>
+                        <span class="md-subhead">Lista de compras</span>
                     </md-card-header-text>
-                </md-card-header>
+                </md-card-header> 
                 <md-divider></md-divider>
                 <md-card-actions layout="row" layout-align="start center">
-                            <md-button class="md-icon-button" aria-label="Add" ui-sref="registro.registro.CompraNew">
-                                <md-tooltip md-autohide>Add</md-tooltip>
+                            <md-button class="md-icon-button" aria-label="Add" ui-sref="registro.registro.compraNew">
+                                <md-tooltip md-autohide>Insertar</md-tooltip>
                                 <ng-md-icon icon="add" aria-label="Add"></ng-md-icon>
                             </md-button>
                             <md-card-icon-actions>
@@ -28,17 +28,13 @@
                         </md-card-actions>
                         
                 <md-card-content>
-               
-                <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
-  
-
                     
                     <table table-responsive>
                         
-                        
+                        <md-progress-linear layout-fill md-mode="indeterminate" ng-hide="!isLoading"></md-progress-linear>
                         <thead md-on-reorder="onReorder">
                             <tr>
-                                <th>#</th>
+                                <th>Id</th>
                                 <th class="col-hidden" data-order="trabajador">trabajador</th>
                                 <th class="col-hidden" data-order="distribuidor">distribuidor</th>
                                 <th class="col-hidden" data-order="marca">marca</th>
@@ -46,36 +42,38 @@
                                 <th class="col-hidden" data-order="producto">producto</th>
                                 <th class="col-hidden" data-order="cantidad">cantidad</th>
                                 
-                                
-                                <th colspan="2" class="align-options">acciones</th>
+                                 <th colspan="2" class="align-options">Modificar</th>
+
+
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="d in lista">
-                                <td> {{ (options.page - 1) * options.page_size +$index +1 }} </td>
-                                <td> {{ d.trabajador }} </td>
-                                <td> {{ d.distribuidor }} </td>
-                                <td> {{ d.marca}} </td>
-                                <td> {{ d.fecha }} </td>
-                                <td> {{ d.producto }} </td>
-                                <td> {{ d.cantidad }} </td>
+                                <td> {{ $index + 1 }} </td>
+                                <td> {{ d.m_trabajador }} </td>
+                                <td> {{ d.m_distribuido}} </td>
+                                <td> {{ d.m_marca}} </td>
+                                <td> {{ d.fecha}} </td>
+                                <td> {{ d.m_producto}} </td>
+                                <td> {{ d.cantidad}} </td>
+
                                 
                                 
                                 <td>
-                                    <md-button class="md-icon-button md-td" aria-label="Edit" ui-sref="registro.registro.CompraEdit({id:d.id})">
-                                        <md-tooltip md-autohide>Edit {{ d.codename }}</md-tooltip>
+                                    <md-button class="md-icon-button md-td" aria-label="Edit" ui-sref="registro.registro.compra({id:d.id})">
+                                        <md-tooltip md-autohide>Editar {{ d.codename }}</md-tooltip>
                                         <ng-md-icon  size="24" icon="edit" aria-label="Edit"></ng-md-icon>
                                     </md-button>
                                 </td>
                                 <td>
+                                    
                                     <md-button class="md-icon-button md-td" aria-label="delete" ng-click="delete(d)">
-                                        <md-tooltip md-autohide>Delete {{ d.codename }}</md-tooltip>
+                                        <md-tooltip md-autohide>Eliminar {{ d.codename }}</md-tooltip>
                                         <ng-md-icon  size="24" icon="delete" aria-label="delete"></ng-md-icon>
                                     </md-button>
                                 </td>
                             </tr>
                         </tbody>
-                        
                     </table>
 
 
@@ -83,9 +81,15 @@
 
                     </md-table-container>
                     <md-table-pagination>
-                        
+                        <table>
+                            <tfoot>
+                                <tr>
+                                    <td>
                                         <app-pagination ng-if="options.pages>0" per="options.page_size" page="options.page" format="{{'jumping'}}" display="4" rango="options.range" accion="list(params)" pages="options.pages" query="query" fields="{{fields}}"></app-pagination>
-                                    
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </md-table-pagination>
                 </md-card-content>
             </md-card>
