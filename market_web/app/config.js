@@ -232,7 +232,7 @@ app.constant('ROUTERS', [{
         "url": "/compra",
         "data": {
             "section": "Registro",
-            "page": "Comra"
+            "page": "Compra"
         },
         "templateUrl": "market_web_apps/registro_web/views/compra/index.html"
     },

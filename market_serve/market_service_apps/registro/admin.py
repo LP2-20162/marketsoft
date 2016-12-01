@@ -5,7 +5,9 @@ from .models.producto import Producto
 from .models.distribuidor import Distribuidor
 from .models.marca import Marca
 from .models.compra import Compra
-
+from .models.venta import todo_item
+from .models.venta import Cabecera_Venta
+from .models.venta import todo_lists
 # Register your models here.
 
 
@@ -42,3 +44,19 @@ class CompraAdmin(admin.ModelAdmin):
     list_display = ('trabajador', 'distribuidor', 'marca',
                     'fecha', 'producto', 'cantidad')
     list_per_page = 3
+
+
+class producto_ventaInline(admin.TabularInline):
+    model = todo_item
+
+
+class Detalle_VentaAdmin(admin.ModelAdmin):
+    inlines = (producto_ventaInline,)
+
+admin.site.register(Cabecera_Venta, Detalle_VentaAdmin)
+
+
+class todolistAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+admin.site.register(todo_lists, todolistAdmin)

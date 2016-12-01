@@ -37,7 +37,7 @@ app
         if ($window.confirm("Seguro?")) {
             RegistroService.Compra.delete({ id: d.id }, function(r) {
                 $log.log("Se eliminó Compra:" + JSON.stringify(d));
-                toastr.success('Se eliminó Compra ' + d.nombre, 'Compra');
+                toastr.success('Se eliminó Compra ' + d.id, 'Compra');
                 $scope.list(params);
             }, function(err) {
                 $log.log("Error in delete:" + JSON.stringify(err));
@@ -71,7 +71,7 @@ app
         if ($scope.Compra.id) {
             RegistroService.Compra.update({ id: $scope.Compra.id }, $scope.Compra, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se editó Compra ' + r.nombre, 'Compra');
+                toastr.success('Se editó Compra ' + r.id, 'Compra');
                 $state.go('Registro.Registro.Compra');
             }, function(err) {
                 $log.log("Error in update:" + JSON.stringify(err));
@@ -80,7 +80,7 @@ app
         } else {
             RegistroService.Compra.save($scope.Compra, function(r) {
                 $log.log("r: " + JSON.stringify(r));
-                toastr.success('Se insertó Compra ' + r.nombre, 'Compra');
+                toastr.success('Se insertó Compra ' + r.id, 'Compra');
                 $state.go('Registro.Registro.Compra');
             }, function(err) {
                 $log.log("Error in save:" + JSON.stringify(err));

@@ -1,0 +1,733 @@
+[2016-12-01 07:46:07] DEBUG [django.db.backends:90] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-12-01 07:46:07] DEBUG [django.db.backends:90] (0.001) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.002) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.025) PRAGMA foreign_keys; args=None
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) PRAGMA foreign_keys = 0; args=None
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] CREATE TABLE "registro_cabecera_venta" ("created" date NOT NULL, "modified" date NOT NULL, "id" char(32) NOT NULL PRIMARY KEY, "fecha" datetime NOT NULL, "cliente_id" char(32) NULL REFERENCES "registro_cliente" ("id")); (params None)
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.004) CREATE TABLE "registro_cabecera_venta" ("created" date NOT NULL, "modified" date NOT NULL, "id" char(32) NOT NULL PRIMARY KEY, "fecha" datetime NOT NULL, "cliente_id" char(32) NULL REFERENCES "registro_cliente" ("id")); args=None
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] CREATE TABLE "registro_todo_item" ("id" char(32) NOT NULL PRIMARY KEY, "cantidad" integer NOT NULL, "list_id_id" char(32) NOT NULL REFERENCES "registro_cabecera_venta" ("id"), "producto_id" char(32) NOT NULL REFERENCES "registro_producto" ("id")); (params None)
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.001) CREATE TABLE "registro_todo_item" ("id" char(32) NOT NULL PRIMARY KEY, "cantidad" integer NOT NULL, "list_id_id" char(32) NOT NULL REFERENCES "registro_cabecera_venta" ("id"), "producto_id" char(32) NOT NULL REFERENCES "registro_producto" ("id")); args=None
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] CREATE TABLE "registro_todo_itemm" ("id" char(32) NOT NULL PRIMARY KEY, "name" varchar(32) NOT NULL, "content" varchar(256) NOT NULL); (params None)
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) CREATE TABLE "registro_todo_itemm" ("id" char(32) NOT NULL PRIMARY KEY, "name" varchar(32) NOT NULL, "content" varchar(256) NOT NULL); args=None
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] CREATE TABLE "registro_todo_lists" ("id" char(32) NOT NULL PRIMARY KEY, "name" varchar(64) NOT NULL); (params None)
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) CREATE TABLE "registro_todo_lists" ("id" char(32) NOT NULL PRIMARY KEY, "name" varchar(64) NOT NULL); args=None
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] ALTER TABLE "registro_todo_itemm" RENAME TO "registro_todo_itemm__old"; (params [])
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) ALTER TABLE "registro_todo_itemm" RENAME TO "registro_todo_itemm__old"; args=[]
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] CREATE TABLE "registro_todo_itemm" ("id" char(32) NOT NULL PRIMARY KEY, "name" varchar(32) NOT NULL, "content" varchar(256) NOT NULL, "list_id_id" char(32) NOT NULL REFERENCES "registro_todo_lists" ("id")); (params None)
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) CREATE TABLE "registro_todo_itemm" ("id" char(32) NOT NULL PRIMARY KEY, "name" varchar(32) NOT NULL, "content" varchar(256) NOT NULL, "list_id_id" char(32) NOT NULL REFERENCES "registro_todo_lists" ("id")); args=None
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] INSERT INTO "registro_todo_itemm" ("content", "list_id_id", "id", "name") SELECT "content", NULL, "id", "name" FROM "registro_todo_itemm__old"; (params [])
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) INSERT INTO "registro_todo_itemm" ("content", "list_id_id", "id", "name") SELECT "content", NULL, "id", "name" FROM "registro_todo_itemm__old"; args=[]
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] DROP TABLE "registro_todo_itemm__old"; (params [])
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.002) DROP TABLE "registro_todo_itemm__old"; args=[]
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] CREATE INDEX "registro_cabecera_venta_4a860110" ON "registro_cabecera_venta" ("cliente_id"); (params [])
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.001) CREATE INDEX "registro_cabecera_venta_4a860110" ON "registro_cabecera_venta" ("cliente_id"); args=[]
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] CREATE INDEX "registro_todo_item_2b0c5f01" ON "registro_todo_item" ("list_id_id"); (params [])
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) CREATE INDEX "registro_todo_item_2b0c5f01" ON "registro_todo_item" ("list_id_id"); args=[]
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] CREATE INDEX "registro_todo_item_bb91903a" ON "registro_todo_item" ("producto_id"); (params [])
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.000) CREATE INDEX "registro_todo_item_bb91903a" ON "registro_todo_item" ("producto_id"); args=[]
+[2016-12-01 07:46:16] DEBUG [django.db.backends.schema:103] CREATE INDEX "registro_todo_itemm_2b0c5f01" ON "registro_todo_itemm" ("list_id_id"); (params [])
+[2016-12-01 07:46:16] DEBUG [django.db.backends:90] (0.001) CREATE INDEX "registro_todo_itemm_2b0c5f01" ON "registro_todo_itemm" ("list_id_id"); args=[]
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) PRAGMA foreign_keys = 0; args=None
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('registro', '0002_auto_20161201_0746', '2016-12-01 12:46:17.103275'); args=['registro', '0002_auto_20161201_0746', '2016-12-01 12:46:17.103275']
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'logentry' AND "django_content_type"."app_label" = 'admin'); args=('logentry', 'admin')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (1) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(1,)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'admin'; args=('admin',)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'group' AND "django_content_type"."app_label" = 'auth'); args=('group', 'auth')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'permission' AND "django_content_type"."app_label" = 'auth'); args=('permission', 'auth')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (2, 3) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(2, 3)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auth'; args=('auth',)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'contenttype' AND "django_content_type"."app_label" = 'contenttypes'); args=('contenttype', 'contenttypes')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (4) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(4,)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'contenttypes'; args=('contenttypes',)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'session' AND "django_content_type"."app_label" = 'sessions'); args=('session', 'sessions')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (5) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(5,)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sessions'; args=('sessions',)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'corsmodel' AND "django_content_type"."app_label" = 'corsheaders'); args=('corsmodel', 'corsheaders')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (6) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(6,)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'corsheaders'; args=('corsheaders',)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'refreshtoken' AND "django_content_type"."app_label" = 'oauth2_provider'); args=('refreshtoken', 'oauth2_provider')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'grant' AND "django_content_type"."app_label" = 'oauth2_provider'); args=('grant', 'oauth2_provider')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'accesstoken' AND "django_content_type"."app_label" = 'oauth2_provider'); args=('accesstoken', 'oauth2_provider')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'application' AND "django_content_type"."app_label" = 'oauth2_provider'); args=('application', 'oauth2_provider')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (8, 9, 10, 7) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(8, 9, 10, 7)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'oauth2_provider'; args=('oauth2_provider',)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'menu' AND "django_content_type"."app_label" = 'auths'); args=('menu', 'auths')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'hierarchytype' AND "django_content_type"."app_label" = 'auths'); args=('hierarchytype', 'auths')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'userhierarchygroup' AND "django_content_type"."app_label" = 'auths'); args=('userhierarchygroup', 'auths')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'user' AND "django_content_type"."app_label" = 'auths'); args=('user', 'auths')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'hierarchy' AND "django_content_type"."app_label" = 'auths'); args=('hierarchy', 'auths')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'userhierarchypermission' AND "django_content_type"."app_label" = 'auths'); args=('userhierarchypermission', 'auths')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'person' AND "django_content_type"."app_label" = 'auths'); args=('person', 'auths')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (11, 12, 13, 14, 15, 16, 17) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(11, 12, 13, 14, 15, 16, 17)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auths'; args=('auths',)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'cabecera_venta' AND "django_content_type"."app_label" = 'registro'); args=('cabecera_venta', 'registro')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'registro' AND "django_content_type"."model" = 'cabecera_venta'); args=('registro', 'cabecera_venta')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('registro', 'cabecera_venta'); args=['registro', 'cabecera_venta']
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'producto' AND "django_content_type"."app_label" = 'registro'); args=('producto', 'registro')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'compra' AND "django_content_type"."app_label" = 'registro'); args=('compra', 'registro')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'marca' AND "django_content_type"."app_label" = 'registro'); args=('marca', 'registro')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'distribuidor' AND "django_content_type"."app_label" = 'registro'); args=('distribuidor', 'registro')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'todo_item' AND "django_content_type"."app_label" = 'registro'); args=('todo_item', 'registro')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'registro' AND "django_content_type"."model" = 'todo_item'); args=('registro', 'todo_item')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('registro', 'todo_item'); args=['registro', 'todo_item']
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'cliente' AND "django_content_type"."app_label" = 'registro'); args=('cliente', 'registro')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'todo_itemm' AND "django_content_type"."app_label" = 'registro'); args=('todo_itemm', 'registro')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'registro' AND "django_content_type"."model" = 'todo_itemm'); args=('registro', 'todo_itemm')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('registro', 'todo_itemm'); args=['registro', 'todo_itemm']
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'todo_lists' AND "django_content_type"."app_label" = 'registro'); args=('todo_lists', 'registro')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'registro' AND "django_content_type"."model" = 'todo_lists'); args=('registro', 'todo_lists')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.002) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('registro', 'todo_lists'); args=['registro', 'todo_lists']
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (18, 19, 20, 21, 22, 23, 24, 25, 26) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(18, 19, 20, 21, 22, 23, 24, 25, 26)
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add Venta', 23, 'add_cabecera_venta' UNION ALL SELECT 'Can change Venta', 23, 'change_cabecera_venta' UNION ALL SELECT 'Can delete Venta', 23, 'delete_cabecera_venta' UNION ALL SELECT 'Can add todo_item', 24, 'add_todo_item' UNION ALL SELECT 'Can change todo_item', 24, 'change_todo_item' UNION ALL SELECT 'Can delete todo_item', 24, 'delete_todo_item' UNION ALL SELECT 'Can add todo_itemm', 25, 'add_todo_itemm' UNION ALL SELECT 'Can change todo_itemm', 25, 'change_todo_itemm' UNION ALL SELECT 'Can delete todo_itemm', 25, 'delete_todo_itemm' UNION ALL SELECT 'Can add todo_lists', 26, 'add_todo_lists' UNION ALL SELECT 'Can change todo_lists', 26, 'change_todo_lists' UNION ALL SELECT 'Can delete todo_lists', 26, 'delete_todo_lists'; args=('Can add Venta', 23, 'add_cabecera_venta', 'Can change Venta', 23, 'change_cabecera_venta', 'Can delete Venta', 23, 'delete_cabecera_venta', 'Can add todo_item', 24, 'add_todo_item', 'Can change todo_item', 24, 'change_todo_item', 'Can delete todo_item', 24, 'delete_todo_item', 'Can add todo_itemm', 25, 'add_todo_itemm', 'Can change todo_itemm', 25, 'change_todo_itemm', 'Can delete todo_itemm', 25, 'delete_todo_itemm', 'Can add todo_lists', 26, 'add_todo_lists', 'Can change todo_lists', 26, 'change_todo_lists', 'Can delete todo_lists', 26, 'delete_todo_lists')
+[2016-12-01 07:46:17] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'registro'; args=('registro',)
+[2016-12-01 07:46:27] DEBUG [django.db.backends:90] (0.002) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-12-01 07:46:27] DEBUG [django.db.backends:90] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[2016-12-01 07:46:38] DEBUG [django.db.backends:90] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:46:38.673128'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:46:38.673128')
+[2016-12-01 07:46:38] DEBUG [django.db.backends:90] (0.000) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:46:38] DEBUG [django.template:929] Exception while resolving variable 'is_popup' in template 'admin/app_index.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'None': None, 'False': False}, {'user': <SimpleLazyObject: <User: admin>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x04D984B0>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'ERROR': 40, 'SUCCESS': 25, 'WARNING': 30}, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x04D99F18>>, 'request': <WSGIRequest: GET '/admin/registro/'>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x05076790>}, {}, {'site_title': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04120BD0>, 'available_apps': [{'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04148710>, 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05086090>, 'object_name': 'Group', 'add_url': '/admin/auth/group/add/', 'admin_url': '/admin/auth/group/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x050767F0>, 'object_name': 'Permission', 'add_url': '/admin/auth/permission/add/', 'admin_url': '/admin/auth/permission/', 'perms': {'change': True, 'add': True, 'delete': True}}]}, {'name': 'Auths', 'app_label': 'auths', 'app_url': '/admin/auths/', 'has_module_perms': True, 'models': [{'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A0B0>, 'object_name': 'HierarchyType', 'add_url': '/admin/auths/hierarchytype/add/', 'admin_url': '/admin/auths/hierarchytype/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A6B0>, 'object_name': 'Hierarchy', 'add_url': '/admin/auths/hierarchy/add/', 'admin_url': '/admin/auths/hierarchy/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A5F0>, 'object_name': 'Menu', 'add_url': '/admin/auths/menu/add/', 'admin_url': '/admin/auths/menu/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05076F90>, 'object_name': 'Person', 'add_url': '/admin/auths/person/add/', 'admin_url': '/admin/auths/person/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05076E10>, 'object_name': 'UserHierarchyGroup', 'add_url': '/admin/auths/userhierarchygroup/add/', 'admin_url': '/admin/auths/userhierarchygroup/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A710>, 'object_name': 'UserHierarchyPermission', 'add_url': '/admin/auths/userhierarchypermission/add/', 'admin_url': '/admin/auths/userhierarchypermission/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A3D0>, 'object_name': 'User', 'add_url': '/admin/auths/user/add/', 'admin_url': '/admin/auths/user/', 'perms': {'change': True, 'add': True, 'delete': True}}]}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04148610>, 'app_label': 'contenttypes', 'app_url': '/admin/contenttypes/', 'has_module_perms': True, 'models': [{'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x050760F0>, 'object_name': 'ContentType', 'add_url': '/admin/contenttypes/contenttype/add/', 'admin_url': '/admin/contenttypes/contenttype/', 'perms': {'change': True, 'add': True, 'delete': True}}]}, {'name': 'Django OAuth Toolkit', 'app_label': 'oauth2_provider', 'app_url': '/admin/oauth2_provider/', 'has_module_perms': True, 'models': [{'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05076C30>, 'object_name': 'AccessToken', 'add_url': '/admin/oauth2_provider/accesstoken/add/', 'admin_url': '/admin/oauth2_provider/accesstoken/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A610>, 'object_name': 'Application', 'add_url': '/admin/oauth2_provider/application/add/', 'admin_url': '/admin/oauth2_provider/application/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05076690>, 'object_name': 'Grant', 'add_url': '/admin/oauth2_provider/grant/add/', 'admin_url': '/admin/oauth2_provider/grant/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A630>, 'object_name': 'RefreshToken', 'add_url': '/admin/oauth2_provider/refreshtoken/add/', 'admin_url': '/admin/oauth2_provider/refreshtoken/', 'perms': {'change': True, 'add': True, 'delete': True}}]}, {'name': 'Registro', 'app_label': 'registro', 'app_url': '/admin/registro/', 'has_module_perms': True, 'models': [{'name': 'Clientes', 'object_name': 'Cliente', 'add_url': '/admin/registro/cliente/add/', 'admin_url': '/admin/registro/cliente/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A770>, 'object_name': 'Compra', 'add_url': '/admin/registro/compra/add/', 'admin_url': '/admin/registro/compra/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05076F30>, 'object_name': 'Distribuidor', 'add_url': '/admin/registro/distribuidor/add/', 'admin_url': '/admin/registro/distribuidor/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x050860B0>, 'object_name': 'Marca', 'add_url': '/admin/registro/marca/add/', 'admin_url': '/admin/registro/marca/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A390>, 'object_name': 'Producto', 'add_url': '/admin/registro/producto/add/', 'admin_url': '/admin/registro/producto/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A690>, 'object_name': 'todo_lists', 'add_url': '/admin/registro/todo_lists/add/', 'admin_url': '/admin/registro/todo_lists/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': 'Ventas', 'object_name': 'Cabecera_Venta', 'add_url': '/admin/registro/cabecera_venta/add/', 'admin_url': '/admin/registro/cabecera_venta/', 'perms': {'change': True, 'add': True, 'delete': True}}]}], 'app_list': [{'name': 'Registro', 'app_label': 'registro', 'app_url': '/admin/registro/', 'has_module_perms': True, 'models': [{'name': 'Clientes', 'object_name': 'Cliente', 'add_url': '/admin/registro/cliente/add/', 'admin_url': '/admin/registro/cliente/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05086070>, 'object_name': 'Compra', 'add_url': '/admin/registro/compra/add/', 'admin_url': '/admin/registro/compra/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05086B30>, 'object_name': 'Distribuidor', 'add_url': '/admin/registro/distribuidor/add/', 'admin_url': '/admin/registro/distribuidor/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05032530>, 'object_name': 'Marca', 'add_url': '/admin/registro/marca/add/', 'admin_url': '/admin/registro/marca/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05086B70>, 'object_name': 'Producto', 'add_url': '/admin/registro/producto/add/', 'admin_url': '/admin/registro/producto/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05032130>, 'object_name': 'todo_lists', 'add_url': '/admin/registro/todo_lists/add/', 'admin_url': '/admin/registro/todo_lists/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': 'Ventas', 'object_name': 'Cabecera_Venta', 'add_url': '/admin/registro/cabecera_venta/add/', 'admin_url': '/admin/registro/cabecera_venta/', 'perms': {'change': True, 'add': True, 'delete': True}}]}], 'has_permission': True, 'site_header': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04130B30>, 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False, 'app_label': 'registro', 'site_url': '/', 'title': 'Registro administration'}]"
+[2016-12-01 07:46:38] DEBUG [django.template:929] Exception while resolving variable 'is_popup' in template 'admin/app_index.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'None': None, 'False': False}, {'user': <SimpleLazyObject: <User: admin>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x04D984B0>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'ERROR': 40, 'SUCCESS': 25, 'WARNING': 30}, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x04D99F18>>, 'request': <WSGIRequest: GET '/admin/registro/'>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x05076790>}, {}, {'site_title': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04120BD0>, 'available_apps': [{'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04148710>, 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05086090>, 'object_name': 'Group', 'add_url': '/admin/auth/group/add/', 'admin_url': '/admin/auth/group/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x050767F0>, 'object_name': 'Permission', 'add_url': '/admin/auth/permission/add/', 'admin_url': '/admin/auth/permission/', 'perms': {'change': True, 'add': True, 'delete': True}}]}, {'name': 'Auths', 'app_label': 'auths', 'app_url': '/admin/auths/', 'has_module_perms': True, 'models': [{'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A0B0>, 'object_name': 'HierarchyType', 'add_url': '/admin/auths/hierarchytype/add/', 'admin_url': '/admin/auths/hierarchytype/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A6B0>, 'object_name': 'Hierarchy', 'add_url': '/admin/auths/hierarchy/add/', 'admin_url': '/admin/auths/hierarchy/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A5F0>, 'object_name': 'Menu', 'add_url': '/admin/auths/menu/add/', 'admin_url': '/admin/auths/menu/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05076F90>, 'object_name': 'Person', 'add_url': '/admin/auths/person/add/', 'admin_url': '/admin/auths/person/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05076E10>, 'object_name': 'UserHierarchyGroup', 'add_url': '/admin/auths/userhierarchygroup/add/', 'admin_url': '/admin/auths/userhierarchygroup/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A710>, 'object_name': 'UserHierarchyPermission', 'add_url': '/admin/auths/userhierarchypermission/add/', 'admin_url': '/admin/auths/userhierarchypermission/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A3D0>, 'object_name': 'User', 'add_url': '/admin/auths/user/add/', 'admin_url': '/admin/auths/user/', 'perms': {'change': True, 'add': True, 'delete': True}}]}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04148610>, 'app_label': 'contenttypes', 'app_url': '/admin/contenttypes/', 'has_module_perms': True, 'models': [{'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x050760F0>, 'object_name': 'ContentType', 'add_url': '/admin/contenttypes/contenttype/add/', 'admin_url': '/admin/contenttypes/contenttype/', 'perms': {'change': True, 'add': True, 'delete': True}}]}, {'name': 'Django OAuth Toolkit', 'app_label': 'oauth2_provider', 'app_url': '/admin/oauth2_provider/', 'has_module_perms': True, 'models': [{'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05076C30>, 'object_name': 'AccessToken', 'add_url': '/admin/oauth2_provider/accesstoken/add/', 'admin_url': '/admin/oauth2_provider/accesstoken/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A610>, 'object_name': 'Application', 'add_url': '/admin/oauth2_provider/application/add/', 'admin_url': '/admin/oauth2_provider/application/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05076690>, 'object_name': 'Grant', 'add_url': '/admin/oauth2_provider/grant/add/', 'admin_url': '/admin/oauth2_provider/grant/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A630>, 'object_name': 'RefreshToken', 'add_url': '/admin/oauth2_provider/refreshtoken/add/', 'admin_url': '/admin/oauth2_provider/refreshtoken/', 'perms': {'change': True, 'add': True, 'delete': True}}]}, {'name': 'Registro', 'app_label': 'registro', 'app_url': '/admin/registro/', 'has_module_perms': True, 'models': [{'name': 'Clientes', 'object_name': 'Cliente', 'add_url': '/admin/registro/cliente/add/', 'admin_url': '/admin/registro/cliente/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A770>, 'object_name': 'Compra', 'add_url': '/admin/registro/compra/add/', 'admin_url': '/admin/registro/compra/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05076F30>, 'object_name': 'Distribuidor', 'add_url': '/admin/registro/distribuidor/add/', 'admin_url': '/admin/registro/distribuidor/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x050860B0>, 'object_name': 'Marca', 'add_url': '/admin/registro/marca/add/', 'admin_url': '/admin/registro/marca/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A390>, 'object_name': 'Producto', 'add_url': '/admin/registro/producto/add/', 'admin_url': '/admin/registro/producto/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x0504A690>, 'object_name': 'todo_lists', 'add_url': '/admin/registro/todo_lists/add/', 'admin_url': '/admin/registro/todo_lists/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': 'Ventas', 'object_name': 'Cabecera_Venta', 'add_url': '/admin/registro/cabecera_venta/add/', 'admin_url': '/admin/registro/cabecera_venta/', 'perms': {'change': True, 'add': True, 'delete': True}}]}], 'app_list': [{'name': 'Registro', 'app_label': 'registro', 'app_url': '/admin/registro/', 'has_module_perms': True, 'models': [{'name': 'Clientes', 'object_name': 'Cliente', 'add_url': '/admin/registro/cliente/add/', 'admin_url': '/admin/registro/cliente/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05086070>, 'object_name': 'Compra', 'add_url': '/admin/registro/compra/add/', 'admin_url': '/admin/registro/compra/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05086B30>, 'object_name': 'Distribuidor', 'add_url': '/admin/registro/distribuidor/add/', 'admin_url': '/admin/registro/distribuidor/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05032530>, 'object_name': 'Marca', 'add_url': '/admin/registro/marca/add/', 'admin_url': '/admin/registro/marca/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05086B70>, 'object_name': 'Producto', 'add_url': '/admin/registro/producto/add/', 'admin_url': '/admin/registro/producto/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x05032130>, 'object_name': 'todo_lists', 'add_url': '/admin/registro/todo_lists/add/', 'admin_url': '/admin/registro/todo_lists/', 'perms': {'change': True, 'add': True, 'delete': True}}, {'name': 'Ventas', 'object_name': 'Cabecera_Venta', 'add_url': '/admin/registro/cabecera_venta/add/', 'admin_url': '/admin/registro/cabecera_venta/', 'perms': {'change': True, 'add': True, 'delete': True}}]}], 'has_permission': True, 'site_header': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04130B30>, 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False, 'app_label': 'registro', 'site_url': '/', 'title': 'Registro administration'}]"
+[2016-12-01 07:46:38] INFO [django.server:131] "GET /admin/registro/ HTTP/1.1" 200 4839
+[2016-12-01 07:46:45] DEBUG [django.db.backends:90] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:46:45.816984'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:46:45.816984')
+[2016-12-01 07:46:45] DEBUG [django.db.backends:90] (0.001) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:46:45] DEBUG [django.db.backends:90] (0.000) SELECT COUNT(*) AS "__count" FROM "registro_cabecera_venta"; args=()
+[2016-12-01 07:46:45] DEBUG [django.db.backends:90] (0.000) SELECT COUNT(*) AS "__count" FROM "registro_cabecera_venta"; args=()
+[2016-12-01 07:46:45] DEBUG [django.db.backends:90] (0.000) SELECT "registro_cabecera_venta"."created", "registro_cabecera_venta"."modified", "registro_cabecera_venta"."id", "registro_cabecera_venta"."cliente_id", "registro_cabecera_venta"."fecha" FROM "registro_cabecera_venta" ORDER BY "registro_cabecera_venta"."id" DESC; args=()
+[2016-12-01 07:46:45] DEBUG [django.template:929] Exception while resolving variable 'errors' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [errors] in 'None'
+[2016-12-01 07:46:45] DEBUG [django.template:929] Exception while resolving variable 'show' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [show] in "[{'True': True, 'None': None, 'False': False, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x0507D618>>}]"
+[2016-12-01 07:46:45] DEBUG [django.template:929] Exception while resolving variable 'is_multipart' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'is_multipart'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_multipart'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_multipart] in 'None'
+[2016-12-01 07:46:45] INFO [django.server:131] "GET /admin/registro/cabecera_venta/ HTTP/1.1" 200 3151
+[2016-12-01 07:46:46] DEBUG [django.db.backends:90] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:46:46.009125'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:46:46.009125')
+[2016-12-01 07:46:46] DEBUG [django.db.backends:90] (0.000) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:46:46] INFO [django.server:131] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[2016-12-01 07:46:47] DEBUG [django.db.backends:90] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:46:47.881377'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:46:47.881377')
+[2016-12-01 07:46:47] DEBUG [django.db.backends:90] (0.000) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:46:47] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
+[2016-12-01 07:46:47] DEBUG [django.db.backends:90] (0.000) SELECT "registro_todo_item"."id", "registro_todo_item"."list_id_id", "registro_todo_item"."producto_id", "registro_todo_item"."cantidad" FROM "registro_todo_item" WHERE "registro_todo_item"."list_id_id" = 'cda3a6a6161a4f60b3dcdedc698e693b' ORDER BY "registro_todo_item"."id" ASC; args=('cda3a6a6161a4f60b3dcdedc698e693b',)
+[2016-12-01 07:46:47] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'registro' AND "django_content_type"."model" = 'cabecera_venta'); args=('registro', 'cabecera_venta')
+[2016-12-01 07:46:47] DEBUG [django.db.backends:90] (0.000) SELECT "registro_cliente"."id", "registro_cliente"."nombre", "registro_cliente"."apellidos", "registro_cliente"."dni", "registro_cliente"."direccion", "registro_cliente"."created_at", "registro_cliente"."updated_at" FROM "registro_cliente"; args=()
+[2016-12-01 07:46:47] DEBUG [django.template:929] Exception while resolving variable 'can_delete_related' in template 'admin/related_widget_wrapper.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'Context' has no attribute 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [can_delete_related] in '[{\'True\': True, \'None\': None, \'False\': False}, {\'change_related_template_url\': \'/admin/registro/cliente/__fk__/change/\', \'widget\': \'<select id="id_cliente" name="cliente">\\n<option value="" selected="selected">---------</option>\\n<option value="d58a8677-9830-49f2-b216-8812e83dfc18">Elias</option>\\n</select>\', \'url_params\': \'_to_field=id&_popup=1\', \'name\': \'cliente\', \'can_change_related\': True, \'can_add_related\': True, \'add_related_url\': \'/admin/registro/cliente/add/\', \'model\': \'Cliente\'}, {\'block\': <Block Node: links. Contents: [<TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n    \'>]>}]'
+[2016-12-01 07:46:47] DEBUG [django.db.backends:90] (0.000) SELECT "registro_producto"."id", "registro_producto"."presentancion", "registro_producto"."nombre", "registro_producto"."fecha_expiracion", "registro_producto"."fecha_produccion", "registro_producto"."descripcion", "registro_producto"."precio_Compra", "registro_producto"."precio_venta", "registro_producto"."stock" FROM "registro_producto"; args=()
+[2016-12-01 07:46:47] DEBUG [django.template:929] Exception while resolving variable 'can_delete_related' in template 'admin/related_widget_wrapper.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'Context' has no attribute 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [can_delete_related] in '[{\'True\': True, \'None\': None, \'False\': False}, {\'change_related_template_url\': \'/admin/registro/producto/__fk__/change/\', \'widget\': \'<select id="id_todo_item_set-0-producto" name="todo_item_set-0-producto">\\n<option value="" selected="selected">---------</option>\\n<option value="7bb19748-755a-456f-b99b-08872356920e">Producto object</option>\\n</select>\', \'url_params\': \'_to_field=id&_popup=1\', \'name\': \'todo_item_set-0-producto\', \'can_change_related\': True, \'can_add_related\': True, \'add_related_url\': \'/admin/registro/producto/add/\', \'model\': \'producto\'}, {\'block\': <Block Node: links. Contents: [<TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n    \'>]>}]'
+[2016-12-01 07:46:47] DEBUG [django.db.backends:90] (0.000) SELECT "registro_producto"."id", "registro_producto"."presentancion", "registro_producto"."nombre", "registro_producto"."fecha_expiracion", "registro_producto"."fecha_produccion", "registro_producto"."descripcion", "registro_producto"."precio_Compra", "registro_producto"."precio_venta", "registro_producto"."stock" FROM "registro_producto"; args=()
+[2016-12-01 07:46:47] DEBUG [django.template:929] Exception while resolving variable 'can_delete_related' in template 'admin/related_widget_wrapper.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'Context' has no attribute 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [can_delete_related] in '[{\'True\': True, \'None\': None, \'False\': False}, {\'change_related_template_url\': \'/admin/registro/producto/__fk__/change/\', \'widget\': \'<select id="id_todo_item_set-1-producto" name="todo_item_set-1-producto">\\n<option value="" selected="selected">---------</option>\\n<option value="7bb19748-755a-456f-b99b-08872356920e">Producto object</option>\\n</select>\', \'url_params\': \'_to_field=id&_popup=1\', \'name\': \'todo_item_set-1-producto\', \'can_change_related\': True, \'can_add_related\': True, \'add_related_url\': \'/admin/registro/producto/add/\', \'model\': \'producto\'}, {\'block\': <Block Node: links. Contents: [<TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n    \'>]>}]'
+[2016-12-01 07:46:47] DEBUG [django.db.backends:90] (0.000) SELECT "registro_producto"."id", "registro_producto"."presentancion", "registro_producto"."nombre", "registro_producto"."fecha_expiracion", "registro_producto"."fecha_produccion", "registro_producto"."descripcion", "registro_producto"."precio_Compra", "registro_producto"."precio_venta", "registro_producto"."stock" FROM "registro_producto"; args=()
+[2016-12-01 07:46:47] DEBUG [django.template:929] Exception while resolving variable 'can_delete_related' in template 'admin/related_widget_wrapper.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'Context' has no attribute 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [can_delete_related] in '[{\'True\': True, \'None\': None, \'False\': False}, {\'change_related_template_url\': \'/admin/registro/producto/__fk__/change/\', \'widget\': \'<select id="id_todo_item_set-2-producto" name="todo_item_set-2-producto">\\n<option value="" selected="selected">---------</option>\\n<option value="7bb19748-755a-456f-b99b-08872356920e">Producto object</option>\\n</select>\', \'url_params\': \'_to_field=id&_popup=1\', \'name\': \'todo_item_set-2-producto\', \'can_change_related\': True, \'can_add_related\': True, \'add_related_url\': \'/admin/registro/producto/add/\', \'model\': \'producto\'}, {\'block\': <Block Node: links. Contents: [<TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n    \'>]>}]'
+[2016-12-01 07:46:48] DEBUG [django.db.backends:90] (0.001) SELECT "registro_producto"."id", "registro_producto"."presentancion", "registro_producto"."nombre", "registro_producto"."fecha_expiracion", "registro_producto"."fecha_produccion", "registro_producto"."descripcion", "registro_producto"."precio_Compra", "registro_producto"."precio_venta", "registro_producto"."stock" FROM "registro_producto"; args=()
+[2016-12-01 07:46:48] DEBUG [django.template:929] Exception while resolving variable 'can_delete_related' in template 'admin/related_widget_wrapper.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'Context' has no attribute 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [can_delete_related] in '[{\'True\': True, \'None\': None, \'False\': False}, {\'change_related_template_url\': \'/admin/registro/producto/__fk__/change/\', \'widget\': \'<select id="id_todo_item_set-__prefix__-producto" name="todo_item_set-__prefix__-producto">\\n<option value="" selected="selected">---------</option>\\n<option value="7bb19748-755a-456f-b99b-08872356920e">Producto object</option>\\n</select>\', \'url_params\': \'_to_field=id&_popup=1\', \'name\': \'todo_item_set-__prefix__-producto\', \'can_change_related\': True, \'can_add_related\': True, \'add_related_url\': \'/admin/registro/producto/add/\', \'model\': \'producto\'}, {\'block\': <Block Node: links. Contents: [<TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n    \'>]>}]'
+[2016-12-01 07:46:48] INFO [django.server:131] "GET /admin/registro/cabecera_venta/add/ HTTP/1.1" 200 13680
+[2016-12-01 07:46:48] DEBUG [django.db.backends:90] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:46:48.127677'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:46:48.127677')
+[2016-12-01 07:46:48] DEBUG [django.db.backends:90] (0.001) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:46:48] INFO [django.server:131] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[2016-12-01 07:46:48] INFO [django.server:131] "GET /static/admin/js/inlines.js HTTP/1.1" 304 0
+[2016-12-01 07:48:22] DEBUG [django.db.backends:90] (0.002) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-12-01 07:48:22] DEBUG [django.db.backends:90] (0.001) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[2016-12-01 07:48:28] DEBUG [django.db.backends:90] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:48:28.935087'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:48:28.935087')
+[2016-12-01 07:48:28] DEBUG [django.db.backends:90] (0.000) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:48:29] DEBUG [django.template:929] Exception while resolving variable 'is_popup' in template 'admin/app_index.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'None': None, 'True': True, 'False': False}, {'user': <SimpleLazyObject: <User: admin>>, 'request': <WSGIRequest: GET '/admin/registro/'>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x04754670>, 'DEFAULT_MESSAGE_LEVELS': {'ERROR': 40, 'DEBUG': 10, 'SUCCESS': 25, 'INFO': 20, 'WARNING': 30}, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x04679ED0>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x04355630>}, {}, {'app_label': 'registro', 'available_apps': [{'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x03A585B0>, 'models': [{'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/', 'object_name': 'Group', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04763090>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auth/permission/', 'add_url': '/admin/auth/permission/add/', 'object_name': 'Permission', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754450>, 'perms': {'delete': True, 'change': True, 'add': True}}]}, {'app_label': 'auths', 'app_url': '/admin/auths/', 'has_module_perms': True, 'name': 'Auths', 'models': [{'admin_url': '/admin/auths/hierarchytype/', 'add_url': '/admin/auths/hierarchytype/add/', 'object_name': 'HierarchyType', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754BB0>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/hierarchy/', 'add_url': '/admin/auths/hierarchy/add/', 'object_name': 'Hierarchy', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x047548B0>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/menu/', 'add_url': '/admin/auths/menu/add/', 'object_name': 'Menu', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x047548D0>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/person/', 'add_url': '/admin/auths/person/add/', 'object_name': 'Person', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754F90>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/userhierarchygroup/', 'add_url': '/admin/auths/userhierarchygroup/add/', 'object_name': 'UserHierarchyGroup', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754090>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/userhierarchypermission/', 'add_url': '/admin/auths/userhierarchypermission/add/', 'object_name': 'UserHierarchyPermission', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754A10>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/user/', 'add_url': '/admin/auths/user/add/', 'object_name': 'User', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754810>, 'perms': {'delete': True, 'change': True, 'add': True}}]}, {'app_label': 'contenttypes', 'app_url': '/admin/contenttypes/', 'has_module_perms': True, 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x03A58750>, 'models': [{'admin_url': '/admin/contenttypes/contenttype/', 'add_url': '/admin/contenttypes/contenttype/add/', 'object_name': 'ContentType', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754DD0>, 'perms': {'delete': True, 'change': True, 'add': True}}]}, {'app_label': 'oauth2_provider', 'app_url': '/admin/oauth2_provider/', 'has_module_perms': True, 'name': 'Django OAuth Toolkit', 'models': [{'admin_url': '/admin/oauth2_provider/accesstoken/', 'add_url': '/admin/oauth2_provider/accesstoken/add/', 'object_name': 'AccessToken', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x047540F0>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/oauth2_provider/application/', 'add_url': '/admin/oauth2_provider/application/add/', 'object_name': 'Application', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754250>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/oauth2_provider/grant/', 'add_url': '/admin/oauth2_provider/grant/add/', 'object_name': 'Grant', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754070>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/oauth2_provider/refreshtoken/', 'add_url': '/admin/oauth2_provider/refreshtoken/add/', 'object_name': 'RefreshToken', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754FF0>, 'perms': {'delete': True, 'change': True, 'add': True}}]}, {'app_label': 'registro', 'app_url': '/admin/registro/', 'has_module_perms': True, 'name': 'Registro', 'models': [{'admin_url': '/admin/registro/cliente/', 'add_url': '/admin/registro/cliente/add/', 'object_name': 'Cliente', 'name': 'Clientes', 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/compra/', 'add_url': '/admin/registro/compra/add/', 'object_name': 'Compra', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754050>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/distribuidor/', 'add_url': '/admin/registro/distribuidor/add/', 'object_name': 'Distribuidor', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754D70>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/marca/', 'add_url': '/admin/registro/marca/add/', 'object_name': 'Marca', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04763030>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/producto/', 'add_url': '/admin/registro/producto/add/', 'object_name': 'Producto', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04763050>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/todo_lists/', 'add_url': '/admin/registro/todo_lists/add/', 'object_name': 'todo_lists', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754330>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/cabecera_venta/', 'add_url': '/admin/registro/cabecera_venta/add/', 'object_name': 'Cabecera_Venta', 'name': 'Ventas', 'perms': {'delete': True, 'change': True, 'add': True}}]}], 'LANGUAGE_BIDI': False, 'site_header': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x03A40B10>, 'has_permission': True, 'app_list': [{'app_label': 'registro', 'app_url': '/admin/registro/', 'has_module_perms': True, 'name': 'Registro', 'models': [{'admin_url': '/admin/registro/cliente/', 'add_url': '/admin/registro/cliente/add/', 'object_name': 'Cliente', 'name': 'Clientes', 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/compra/', 'add_url': '/admin/registro/compra/add/', 'object_name': 'Compra', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x047630B0>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/distribuidor/', 'add_url': '/admin/registro/distribuidor/add/', 'object_name': 'Distribuidor', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04763070>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/marca/', 'add_url': '/admin/registro/marca/add/', 'object_name': 'Marca', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04711530>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/producto/', 'add_url': '/admin/registro/producto/add/', 'object_name': 'Producto', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04763B70>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/todo_lists/', 'add_url': '/admin/registro/todo_lists/add/', 'object_name': 'todo_lists', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04711130>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/cabecera_venta/', 'add_url': '/admin/registro/cabecera_venta/add/', 'object_name': 'Cabecera_Venta', 'name': 'Ventas', 'perms': {'delete': True, 'change': True, 'add': True}}]}], 'LANGUAGE_CODE': 'en-us', 'site_title': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x03A30BB0>, 'site_url': '/', 'title': 'Registro administration'}]"
+[2016-12-01 07:48:29] DEBUG [django.template:929] Exception while resolving variable 'is_popup' in template 'admin/app_index.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'None': None, 'True': True, 'False': False}, {'user': <SimpleLazyObject: <User: admin>>, 'request': <WSGIRequest: GET '/admin/registro/'>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x04754670>, 'DEFAULT_MESSAGE_LEVELS': {'ERROR': 40, 'DEBUG': 10, 'SUCCESS': 25, 'INFO': 20, 'WARNING': 30}, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x04679ED0>>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x04355630>}, {}, {'app_label': 'registro', 'available_apps': [{'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x03A585B0>, 'models': [{'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/', 'object_name': 'Group', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04763090>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auth/permission/', 'add_url': '/admin/auth/permission/add/', 'object_name': 'Permission', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754450>, 'perms': {'delete': True, 'change': True, 'add': True}}]}, {'app_label': 'auths', 'app_url': '/admin/auths/', 'has_module_perms': True, 'name': 'Auths', 'models': [{'admin_url': '/admin/auths/hierarchytype/', 'add_url': '/admin/auths/hierarchytype/add/', 'object_name': 'HierarchyType', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754BB0>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/hierarchy/', 'add_url': '/admin/auths/hierarchy/add/', 'object_name': 'Hierarchy', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x047548B0>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/menu/', 'add_url': '/admin/auths/menu/add/', 'object_name': 'Menu', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x047548D0>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/person/', 'add_url': '/admin/auths/person/add/', 'object_name': 'Person', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754F90>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/userhierarchygroup/', 'add_url': '/admin/auths/userhierarchygroup/add/', 'object_name': 'UserHierarchyGroup', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754090>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/userhierarchypermission/', 'add_url': '/admin/auths/userhierarchypermission/add/', 'object_name': 'UserHierarchyPermission', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754A10>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/auths/user/', 'add_url': '/admin/auths/user/add/', 'object_name': 'User', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754810>, 'perms': {'delete': True, 'change': True, 'add': True}}]}, {'app_label': 'contenttypes', 'app_url': '/admin/contenttypes/', 'has_module_perms': True, 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x03A58750>, 'models': [{'admin_url': '/admin/contenttypes/contenttype/', 'add_url': '/admin/contenttypes/contenttype/add/', 'object_name': 'ContentType', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754DD0>, 'perms': {'delete': True, 'change': True, 'add': True}}]}, {'app_label': 'oauth2_provider', 'app_url': '/admin/oauth2_provider/', 'has_module_perms': True, 'name': 'Django OAuth Toolkit', 'models': [{'admin_url': '/admin/oauth2_provider/accesstoken/', 'add_url': '/admin/oauth2_provider/accesstoken/add/', 'object_name': 'AccessToken', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x047540F0>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/oauth2_provider/application/', 'add_url': '/admin/oauth2_provider/application/add/', 'object_name': 'Application', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754250>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/oauth2_provider/grant/', 'add_url': '/admin/oauth2_provider/grant/add/', 'object_name': 'Grant', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754070>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/oauth2_provider/refreshtoken/', 'add_url': '/admin/oauth2_provider/refreshtoken/add/', 'object_name': 'RefreshToken', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754FF0>, 'perms': {'delete': True, 'change': True, 'add': True}}]}, {'app_label': 'registro', 'app_url': '/admin/registro/', 'has_module_perms': True, 'name': 'Registro', 'models': [{'admin_url': '/admin/registro/cliente/', 'add_url': '/admin/registro/cliente/add/', 'object_name': 'Cliente', 'name': 'Clientes', 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/compra/', 'add_url': '/admin/registro/compra/add/', 'object_name': 'Compra', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754050>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/distribuidor/', 'add_url': '/admin/registro/distribuidor/add/', 'object_name': 'Distribuidor', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754D70>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/marca/', 'add_url': '/admin/registro/marca/add/', 'object_name': 'Marca', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04763030>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/producto/', 'add_url': '/admin/registro/producto/add/', 'object_name': 'Producto', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04763050>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/todo_lists/', 'add_url': '/admin/registro/todo_lists/add/', 'object_name': 'todo_lists', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04754330>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/cabecera_venta/', 'add_url': '/admin/registro/cabecera_venta/add/', 'object_name': 'Cabecera_Venta', 'name': 'Ventas', 'perms': {'delete': True, 'change': True, 'add': True}}]}], 'LANGUAGE_BIDI': False, 'site_header': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x03A40B10>, 'has_permission': True, 'app_list': [{'app_label': 'registro', 'app_url': '/admin/registro/', 'has_module_perms': True, 'name': 'Registro', 'models': [{'admin_url': '/admin/registro/cliente/', 'add_url': '/admin/registro/cliente/add/', 'object_name': 'Cliente', 'name': 'Clientes', 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/compra/', 'add_url': '/admin/registro/compra/add/', 'object_name': 'Compra', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x047630B0>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/distribuidor/', 'add_url': '/admin/registro/distribuidor/add/', 'object_name': 'Distribuidor', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04763070>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/marca/', 'add_url': '/admin/registro/marca/add/', 'object_name': 'Marca', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04711530>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/producto/', 'add_url': '/admin/registro/producto/add/', 'object_name': 'Producto', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04763B70>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/todo_lists/', 'add_url': '/admin/registro/todo_lists/add/', 'object_name': 'todo_lists', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x04711130>, 'perms': {'delete': True, 'change': True, 'add': True}}, {'admin_url': '/admin/registro/cabecera_venta/', 'add_url': '/admin/registro/cabecera_venta/add/', 'object_name': 'Cabecera_Venta', 'name': 'Ventas', 'perms': {'delete': True, 'change': True, 'add': True}}]}], 'LANGUAGE_CODE': 'en-us', 'site_title': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x03A30BB0>, 'site_url': '/', 'title': 'Registro administration'}]"
+[2016-12-01 07:48:29] INFO [django.server:131] "GET /admin/registro/ HTTP/1.1" 200 4839
+[2016-12-01 07:48:31] DEBUG [django.db.backends:90] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:48:31.478349'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:48:31.478349')
+[2016-12-01 07:48:31] DEBUG [django.db.backends:90] (0.001) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:48:31] DEBUG [django.db.backends:90] (0.000) SELECT COUNT(*) AS "__count" FROM "registro_cabecera_venta"; args=()
+[2016-12-01 07:48:31] DEBUG [django.db.backends:90] (0.001) SELECT COUNT(*) AS "__count" FROM "registro_cabecera_venta"; args=()
+[2016-12-01 07:48:31] DEBUG [django.db.backends:90] (0.000) SELECT "registro_cabecera_venta"."created", "registro_cabecera_venta"."modified", "registro_cabecera_venta"."id", "registro_cabecera_venta"."cliente_id", "registro_cabecera_venta"."fecha" FROM "registro_cabecera_venta" ORDER BY "registro_cabecera_venta"."id" DESC; args=()
+[2016-12-01 07:48:31] DEBUG [django.template:929] Exception while resolving variable 'errors' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [errors] in 'None'
+[2016-12-01 07:48:31] DEBUG [django.template:929] Exception while resolving variable 'show' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [show] in "[{'None': None, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x0475D468>>, 'True': True, 'False': False}]"
+[2016-12-01 07:48:31] DEBUG [django.template:929] Exception while resolving variable 'is_multipart' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'is_multipart'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_multipart'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_multipart] in 'None'
+[2016-12-01 07:48:31] INFO [django.server:131] "GET /admin/registro/cabecera_venta/ HTTP/1.1" 200 3151
+[2016-12-01 07:48:31] DEBUG [django.db.backends:90] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:48:31.598346'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:48:31.598346')
+[2016-12-01 07:48:31] DEBUG [django.db.backends:90] (0.001) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:48:31] INFO [django.server:131] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:48:33.138673'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:48:33.138673')
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.000) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.000) SELECT "registro_todo_item"."id", "registro_todo_item"."list_id_id", "registro_todo_item"."producto_id", "registro_todo_item"."cantidad" FROM "registro_todo_item" WHERE "registro_todo_item"."list_id_id" = '6986c6183d0a4819bf71a5f7001944ad' ORDER BY "registro_todo_item"."id" ASC; args=('6986c6183d0a4819bf71a5f7001944ad',)
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'registro' AND "django_content_type"."model" = 'cabecera_venta'); args=('registro', 'cabecera_venta')
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.002) SELECT "registro_cliente"."id", "registro_cliente"."nombre", "registro_cliente"."apellidos", "registro_cliente"."dni", "registro_cliente"."direccion", "registro_cliente"."created_at", "registro_cliente"."updated_at" FROM "registro_cliente"; args=()
+[2016-12-01 07:48:33] DEBUG [django.template:929] Exception while resolving variable 'can_delete_related' in template 'admin/related_widget_wrapper.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'Context' has no attribute 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [can_delete_related] in '[{\'None\': None, \'True\': True, \'False\': False}, {\'change_related_template_url\': \'/admin/registro/cliente/__fk__/change/\', \'add_related_url\': \'/admin/registro/cliente/add/\', \'model\': \'Cliente\', \'widget\': \'<select id="id_cliente" name="cliente">\\n<option value="" selected="selected">---------</option>\\n<option value="d58a8677-9830-49f2-b216-8812e83dfc18">Elias</option>\\n</select>\', \'url_params\': \'_to_field=id&_popup=1\', \'can_add_related\': True, \'name\': \'cliente\', \'can_change_related\': True}, {\'block\': <Block Node: links. Contents: [<TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n    \'>]>}]'
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.000) SELECT "registro_producto"."id", "registro_producto"."presentancion", "registro_producto"."nombre", "registro_producto"."fecha_expiracion", "registro_producto"."fecha_produccion", "registro_producto"."descripcion", "registro_producto"."precio_Compra", "registro_producto"."precio_venta", "registro_producto"."stock" FROM "registro_producto"; args=()
+[2016-12-01 07:48:33] DEBUG [django.template:929] Exception while resolving variable 'can_delete_related' in template 'admin/related_widget_wrapper.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'Context' has no attribute 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [can_delete_related] in '[{\'None\': None, \'True\': True, \'False\': False}, {\'change_related_template_url\': \'/admin/registro/producto/__fk__/change/\', \'add_related_url\': \'/admin/registro/producto/add/\', \'model\': \'producto\', \'widget\': \'<select id="id_todo_item_set-0-producto" name="todo_item_set-0-producto">\\n<option value="" selected="selected">---------</option>\\n<option value="7bb19748-755a-456f-b99b-08872356920e">Producto object</option>\\n</select>\', \'url_params\': \'_to_field=id&_popup=1\', \'can_add_related\': True, \'name\': \'todo_item_set-0-producto\', \'can_change_related\': True}, {\'block\': <Block Node: links. Contents: [<TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n    \'>]>}]'
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.000) SELECT "registro_producto"."id", "registro_producto"."presentancion", "registro_producto"."nombre", "registro_producto"."fecha_expiracion", "registro_producto"."fecha_produccion", "registro_producto"."descripcion", "registro_producto"."precio_Compra", "registro_producto"."precio_venta", "registro_producto"."stock" FROM "registro_producto"; args=()
+[2016-12-01 07:48:33] DEBUG [django.template:929] Exception while resolving variable 'can_delete_related' in template 'admin/related_widget_wrapper.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'Context' has no attribute 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [can_delete_related] in '[{\'None\': None, \'True\': True, \'False\': False}, {\'change_related_template_url\': \'/admin/registro/producto/__fk__/change/\', \'add_related_url\': \'/admin/registro/producto/add/\', \'model\': \'producto\', \'widget\': \'<select id="id_todo_item_set-1-producto" name="todo_item_set-1-producto">\\n<option value="" selected="selected">---------</option>\\n<option value="7bb19748-755a-456f-b99b-08872356920e">Producto object</option>\\n</select>\', \'url_params\': \'_to_field=id&_popup=1\', \'can_add_related\': True, \'name\': \'todo_item_set-1-producto\', \'can_change_related\': True}, {\'block\': <Block Node: links. Contents: [<TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n    \'>]>}]'
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.000) SELECT "registro_producto"."id", "registro_producto"."presentancion", "registro_producto"."nombre", "registro_producto"."fecha_expiracion", "registro_producto"."fecha_produccion", "registro_producto"."descripcion", "registro_producto"."precio_Compra", "registro_producto"."precio_venta", "registro_producto"."stock" FROM "registro_producto"; args=()
+[2016-12-01 07:48:33] DEBUG [django.template:929] Exception while resolving variable 'can_delete_related' in template 'admin/related_widget_wrapper.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'Context' has no attribute 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [can_delete_related] in '[{\'None\': None, \'True\': True, \'False\': False}, {\'change_related_template_url\': \'/admin/registro/producto/__fk__/change/\', \'add_related_url\': \'/admin/registro/producto/add/\', \'model\': \'producto\', \'widget\': \'<select id="id_todo_item_set-2-producto" name="todo_item_set-2-producto">\\n<option value="" selected="selected">---------</option>\\n<option value="7bb19748-755a-456f-b99b-08872356920e">Producto object</option>\\n</select>\', \'url_params\': \'_to_field=id&_popup=1\', \'can_add_related\': True, \'name\': \'todo_item_set-2-producto\', \'can_change_related\': True}, {\'block\': <Block Node: links. Contents: [<TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n    \'>]>}]'
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.000) SELECT "registro_producto"."id", "registro_producto"."presentancion", "registro_producto"."nombre", "registro_producto"."fecha_expiracion", "registro_producto"."fecha_produccion", "registro_producto"."descripcion", "registro_producto"."precio_Compra", "registro_producto"."precio_venta", "registro_producto"."stock" FROM "registro_producto"; args=()
+[2016-12-01 07:48:33] DEBUG [django.template:929] Exception while resolving variable 'can_delete_related' in template 'admin/related_widget_wrapper.html'.
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python\Python35-32\lib\site-packages\django\template\context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'Context' has no attribute 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'can_delete_related'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python35-32\lib\site-packages\django\template\base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [can_delete_related] in '[{\'None\': None, \'True\': True, \'False\': False}, {\'change_related_template_url\': \'/admin/registro/producto/__fk__/change/\', \'add_related_url\': \'/admin/registro/producto/add/\', \'model\': \'producto\', \'widget\': \'<select id="id_todo_item_set-__prefix__-producto" name="todo_item_set-__prefix__-producto">\\n<option value="" selected="selected">---------</option>\\n<option value="7bb19748-755a-456f-b99b-08872356920e">Producto object</option>\\n</select>\', \'url_params\': \'_to_field=id&_popup=1\', \'can_add_related\': True, \'name\': \'todo_item_set-__prefix__-producto\', \'can_change_related\': True}, {\'block\': <Block Node: links. Contents: [<TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n        \'>, <IfNode>, <TextNode: \'\\n    \'>]>}]'
+[2016-12-01 07:48:33] INFO [django.server:131] "GET /admin/registro/cabecera_venta/add/ HTTP/1.1" 200 13680
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:48:33.358329'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:48:33.358329')
+[2016-12-01 07:48:33] DEBUG [django.db.backends:90] (0.000) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:48:33] INFO [django.server:131] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[2016-12-01 07:48:41] DEBUG [django.db.backends:90] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:48:41.035409'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:48:41.035409')
+[2016-12-01 07:48:41] DEBUG [django.db.backends:90] (0.001) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:48:41] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
+[2016-12-01 07:48:41] DEBUG [django.db.backends:90] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'registro' AND "django_content_type"."model" = 'producto'); args=('registro', 'producto')
+[2016-12-01 07:48:41] INFO [django.server:131] "GET /admin/registro/producto/add/?_to_field=id&_popup=1 HTTP/1.1" 200 6654
+[2016-12-01 07:48:41] DEBUG [django.db.backends:90] (0.006) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'uknwwqrar0x57hrutleekmdxkms8bj37' AND "django_session"."expire_date" > '2016-12-01 12:48:41.188015'); args=('uknwwqrar0x57hrutleekmdxkms8bj37', '2016-12-01 12:48:41.188015')
+[2016-12-01 07:48:41] DEBUG [django.db.backends:90] (0.000) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '0304c559b5bd4420afafc9f849eacea2'; args=('0304c559b5bd4420afafc9f849eacea2',)
+[2016-12-01 07:48:41] INFO [django.server:131] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
