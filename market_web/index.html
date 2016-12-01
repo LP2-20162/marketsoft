@@ -2,6 +2,9 @@
 <html lang="en" ng-app="app">
 
 <head>
+    <img src="http://www.dia.fi.upm.es/masteria/sites/default/files/General/rna.png" title= flores carita width=250 height=80/>
+
+
     <meta charset="UTF-8">
     <title ng-bind="$state.current.data.section + ($state.current.data.section === Null ? '' : ' > ') +
         $state.current.data.page">
@@ -15,7 +18,7 @@
     <link rel="stylesheet" href="static/styles/table.css" type="text/css" />
 </head>
 
-<body>
+<body background ="http://www.urosario.edu.co/getattachment/84ed602e-9f6e-4c95-b721-325aca41e815/Matematicas-Aplicadas-y-Ciencias-de-la-Computacion">
     <div class="app" ui-view ng-controller="MainCtrl"></div>
     <!-- 3rd-Party packages -->
     <script src="bower_components/angular/angular.min.js"></script>
