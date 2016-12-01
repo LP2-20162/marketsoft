@@ -2318,6 +2318,7 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [non_field_erro
 [2016-11-24 13:40:13] INFO [django.server:131] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
 [2016-11-24 13:40:13] INFO [django.server:131] "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 [2016-11-24 13:51:26] DEBUG [django.db.backends:90] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2016-11-24 21:51:26.456336' AND "django_session"."session_key" = 'figcln8g3oukkwuqylv6c0gc2bcu7o51'); args=('2016-11-24 21:51:26.456336', 'figcln8g3oukkwuqylv6c0gc2bcu7o51')
 [2016-11-24 13:51:26] DEBUG [django.db.backends:90] (0.001) SELECT "auths_user"."password", "auths_user"."last_login", "auths_user"."is_superuser", "auths_user"."username", "auths_user"."first_name", "auths_user"."last_name", "auths_user"."email", "auths_user"."is_staff", "auths_user"."is_active", "auths_user"."date_joined", "auths_user"."id", "auths_user"."last_hierarchy_id", "auths_user"."last_module_id", "auths_user"."person_id", "auths_user"."updated_at", "auths_user"."registered_by" FROM "auths_user" WHERE "auths_user"."id" = '915b008a06b9406391807ca522830fca'; args=('915b008a06b9406391807ca522830fca',)
 [2016-11-24 13:51:26] DEBUG [django.template:929] Exception while resolving variable 'is_popup' in template 'admin/index.html'.
@@ -5397,6 +5398,9 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [non_field_erro
 [2016-11-24 16:43:49] DEBUG [django.db.backends:90] (0.000) BEGIN; args=None
 [2016-11-24 16:43:49] DEBUG [django.db.backends:90] (0.001) INSERT INTO "django_session" ("session_key", "session_data", "expire_date") SELECT 'nryq9l1w9tsq3pldi52867ehrucz7vkj', 'Y2U1MDdhOTVhY2Y1M2EzOGYyOTc1YmE0OTQ4NTlmMWJkODNmMmEzMjp7Il9zZXNzaW9uX2V4cGlyeSI6MzB9', '2016-11-25 00:44:19.148404'; args=('nryq9l1w9tsq3pldi52867ehrucz7vkj', 'Y2U1MDdhOTVhY2Y1M2EzOGYyOTc1YmE0OTQ4NTlmMWJkODNmMmEzMjp7Il9zZXNzaW9uX2V4cGlyeSI6MzB9', '2016-11-25 00:44:19.148404')
 [2016-11-24 16:43:49] INFO [django.server:131] "GET /api/auths/usermenu/ HTTP/1.1" 200 11
+=======
+>>>>>>> b8ecb4cb1a2fbe4f5e98251b9198088369d1a766
+>>>>>>> 46f1bf01c28b03e381927c05acbd47fe8fe1bbe8
 =======
 >>>>>>> b8ecb4cb1a2fbe4f5e98251b9198088369d1a766
 >>>>>>> 46f1bf01c28b03e381927c05acbd47fe8fe1bbe8

@@ -46,10 +46,15 @@ app
     // $mdThemingProvider.theme('default').primaryPalette('amazingPaletteName');
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     $mdThemingProvider.theme('default').primaryPalette('green', {'default': '900'})
 
 
     $mdThemingProvider.theme('docs-dark')
+=======
+        $mdThemingProvider.theme('default').primaryPalette('blue', {'default': '900'})
+        $mdThemingProvider.theme('docs-dark')
+>>>>>>> 46f1bf01c28b03e381927c05acbd47fe8fe1bbe8
 =======
         $mdThemingProvider.theme('default').primaryPalette('blue', {'default': '900'})
         $mdThemingProvider.theme('docs-dark')
