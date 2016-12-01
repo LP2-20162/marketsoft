@@ -26,7 +26,7 @@ class Cabecera_Venta(TimeStampModel):
         verbose_name_plural = "Ventas"
 
     def __unicode__(self):
-        return self.ruc
+        return self.cliente
 
 
 class todo_item(models.Model):
